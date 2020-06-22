@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from notes import views
 
 urlpatterns = [
@@ -10,3 +11,5 @@ urlpatterns = [
     path('logout/', views.logoutuser, name='logoutuser'),
     path('notes/', views.notes, name='notes'),
 ]
+
+urlpatterns += staticfiles_urlpatterns()

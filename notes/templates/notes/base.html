@@ -1,7 +1,6 @@
 {% if user.is_authenticated %}
 
-Logged in as {{ user.username }}
-
+<p>Logged in as {{ user.username }}</p>
 <form action="{% url 'logoutuser' %}" method="POST">
     {% csrf_token %}
     <button type="submit">Log out</button>
@@ -14,4 +13,5 @@ Logged in as {{ user.username }}
 
 {% endif %}
 
-{% block content%}{% endblock %}
+{% block content%}
+{% endblock %}
