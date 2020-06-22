@@ -1,18 +1,35 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Login | n0tes</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Nunito+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'notes/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'notes/signforms.css' %}">
 </head>
 <body>
-    <div>
-        <h1>Login</h1>
-        <h2>{{ error }}</h2>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Login</button>
-        </form>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 col-md-3" id="imageLeft" style="background-image: url({% static 'notes/login-page.jpg' %})"></div>
+            <div class="col-sm-10 col-md-9" id="formContainer">
+                <h2>Log in to n0tes</h2>
+                <p class="error medium-text">{{ error }}</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="medium-text btn">Log in</button>
+                </form>
+                <p>No account? <a href="{% url 'signupuser' %}">Sign up</a></p>
+            </div>
+        </div>
     </div>
+
+    <script>
+        document.getElementById("id_username").placeholder = "Username";
+        document.getElementById("id_password").placeholder = "Password";
+    </script>
 </body>
 </html>
