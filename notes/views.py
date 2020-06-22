@@ -14,6 +14,8 @@ def signupuser(request):
     if request.method == "GET":
         return render(request, 'notes/signupuser.html', {'form': UserCreationForm()})
     else:
+        if len(request.POST['password1']) < 8:
+                return render(request, 'notes/signupuser.html', {'form': UserCreationForm(), 'error': 'Your password must contain at least 8 characters'})
         if request.POST['password1'] == request.POST['password2']:
             try:
                 user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
