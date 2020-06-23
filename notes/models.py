@@ -6,6 +6,7 @@ class Note(models.Model):
     text = models.TextField(blank=True)
     date = models.DateTimeField(auto_now=True)
     important = models.BooleanField(default=False)
+    archive = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

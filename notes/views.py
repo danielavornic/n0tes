@@ -44,11 +44,7 @@ def logoutuser(request):
     if request.method == 'POST':
         logout(request)
         return redirect('home')
-
-def notes(request):
-    usernotes = Note.objects.filter(user=request.user)
-    return render(request, 'notes/notes.html', {'notes': usernotes})
-
+    
 def add(request):
     if request.method == "GET":
         return render(request, 'notes/addnote.html', {'form': NoteForm()})
@@ -61,4 +57,12 @@ def add(request):
                 return redirect('notes')
             else:
                 note.save()
-        return redirect('notes')        
+        return redirect('notes')   
+
+def notes(request):
+    usernotes = Note.objects.filter(user=request.user, archive=False)
+    return render(request, 'notes/notes.html', {'notes': usernotes})
+
+def archive(request):
+    archive = Note.objects.filter(user=request.user, archive=True)
+    return render(request, 'notes/archive.html', {'archive': archive})     
