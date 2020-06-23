@@ -9,7 +9,15 @@
         {% extends 'notes/base.html' %}
         {% block content %}
         <h1>Your Notes</h1>
-
+        <a href="{% url 'add' %}">Add note</a>
+        <ul>
+            {% for note in notes %}
+            <li>
+                {% if note.title %} <b>{{ note.title }}</b> <br>{% endif %} 
+                {{ note.text }}
+            </li>
+            {% endfor %}
+        </ul>
         {% endblock %}
     </div>
 </body>

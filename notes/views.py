@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import login, logout, authenticate
 from .forms import NoteForm
+from .models import Note
 
 def home(request):
     if request.user.is_authenticated:
@@ -45,9 +46,10 @@ def logoutuser(request):
         return redirect('home')
 
 def notes(request):
-    return render(request, 'notes/notes.html')
+    usernotes = Note.objects.filter(user=request.user)
+    return render(request, 'notes/notes.html', {'notes': usernotes})
 
-def addnote(request):
+def add(request):
     if request.method == "GET":
         return render(request, 'notes/addnote.html', {'form': NoteForm()})
     else:
