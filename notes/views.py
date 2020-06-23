@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import login, logout, authenticate
+from .forms import NoteForm
 
 def home(request):
     if request.user.is_authenticated:
@@ -45,3 +46,19 @@ def logoutuser(request):
 
 def notes(request):
     return render(request, 'notes/notes.html')
+
+def addnote(request):
+    if request.method == "GET":
+        return render(request, 'notes/addnote.html', {'form': NoteForm()})
+    else:
+        form = NoteForm(request.POST)
+        if form.is_valid():
+            note = form.save(commit=False)
+            note.user = request.user
+            if not note.text and not note.title:
+                return redirect('notes')
+            else:
+                note.save()
+        return redirect('notes')
+
+        
