@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Important notes | n0tes</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div>
+        {% extends 'notes/base.html' %}
+        {% block content %}
+        <h1>Important notes</h1>
+        <a href="{% url 'add' %}">Add note</a>
+        <ul>
+            {% for note in important %}
+            <li>
+                {% if note.title %} <b>{{ note.title }}</b> <br>{% endif %} 
+                {{ note.text }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endblock %}
+    </div>
+</body>
+</html>

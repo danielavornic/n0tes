@@ -63,6 +63,10 @@ def notes(request):
     usernotes = Note.objects.filter(user=request.user, archive=False)
     return render(request, 'notes/notes.html', {'notes': usernotes})
 
+def important(request):
+    important = Note.objects.filter(user=request.user, important=True)
+    return render(request, 'notes/important.html', {'important': important})
+
 def archive(request):
     archive = Note.objects.filter(user=request.user, archive=True)
     return render(request, 'notes/archive.html', {'archive': archive})     

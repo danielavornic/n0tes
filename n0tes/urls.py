@@ -10,6 +10,7 @@ urlpatterns = [
     path('login/', views.loginuser, name='loginuser'),
     path('logout/', views.logoutuser, name='logoutuser'),
     path('notes/', views.notes, name='notes'),
+    path('important/', views.important, name='important'),
     path('archive/', views.archive, name='archive'),
     path('add/', views.add, name='add'),
 ]
