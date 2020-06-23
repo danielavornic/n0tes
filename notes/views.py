@@ -59,6 +59,4 @@ def addnote(request):
                 return redirect('notes')
             else:
                 note.save()
-        return redirect('notes')
-
-        
+        return redirect('notes')        
