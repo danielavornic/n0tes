@@ -13,8 +13,10 @@
         <ul>
             {% for note in notes %}
             <li>
-                {% if note.title %} <b>{{ note.title }}</b> <br>{% endif %} 
-                {% if note.text %} {{ note.text|safe|truncatechars:100 }}{% endif %} 
+                <a href="{% url 'note' note.id %}">
+                    {% if note.title %} <b>{{ note.title }}</b> <br>{% endif %} 
+                    {% if note.text %} {{ note.text|safe|truncatechars:100 }}{% endif %} 
+                </a>
             </li>
             {% endfor %}
         </ul>

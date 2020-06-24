@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
@@ -8,7 +8,7 @@ from .models import Note
 
 def home(request):
     if request.user.is_authenticated:
-        return render(request, 'notes/notes.html')
+        return redirect('notes')
     else:
         return render(request, 'notes/home.html')
 
@@ -69,4 +69,18 @@ def important(request):
 
 def archive(request):
     archive = Note.objects.filter(user=request.user, archive=True)
-    return render(request, 'notes/archive.html', {'archive': archive})     
+    return render(request, 'notes/archive.html', {'archive': archive})   
+
+def note(request, note_pk):
+    note = get_object_or_404(Note, pk=note_pk, user=request.user)
+    if request.method == "GET":
+        form = NoteForm(instance=note)
+        return render(request, 'notes/note.html', {'note': note, 'form': form})  
+    else:
+        form = NoteForm(request.POST, instance=note)
+        if form.is_valid():
+            if not note.text and not note.title:
+                note.delete()
+            else:
+                form.save()
+    return redirect('notes')   

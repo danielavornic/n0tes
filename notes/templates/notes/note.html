@@ -1,10 +1,8 @@
-{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add note | n0tes</title>
+    <title>n0te</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tiny.cloud/1/bq2e25erbfjw06gx49ky7pwwexnwzzxj858jzcakrxfy2zx2/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         tinymce.init({
@@ -25,12 +23,12 @@
     </script>
 </head>
 <body>
-    <h2>Add note</h2>
-    <p>{{ error }}</p>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+    </div>
 </body>
 </html>
