@@ -13,32 +13,38 @@ def home(request):
         return render(request, 'notes/home.html')
 
 def signupuser(request):
-    if request.method == "GET":
-        return render(request, 'notes/signupuser.html', {'form': UserCreationForm()})
+    if request.user.is_authenticated:
+        return redirect('notes')
     else:
-        if len(request.POST['password1']) < 8:
-                return render(request, 'notes/signupuser.html', {'form': UserCreationForm(), 'error': 'Your password must contain at least 8 characters'})
-        if request.POST['password1'] == request.POST['password2']:
-            try:
-                user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
-                user.save()
-                login(request, user)
-                return redirect('notes')
-            except IntegrityError:
-                return render(request, 'notes/signupuser.html', {'form': UserCreationForm(), 'error': 'That username has already been taken'})
+        if request.method == "GET":
+            return render(request, 'notes/signupuser.html', {'form': UserCreationForm()})
         else:
-            return render(request, 'notes/signupuser.html', {'form': UserCreationForm(), 'error': 'Passwords did not match'})
+            if len(request.POST['password1']) < 8:
+                    return render(request, 'notes/signupuser.html', {'form': UserCreationForm(), 'error': 'Your password must contain at least 8 characters'})
+            if request.POST['password1'] == request.POST['password2']:
+                try:
+                    user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
+                    user.save()
+                    login(request, user)
+                    return redirect('notes')
+                except IntegrityError:
+                    return render(request, 'notes/signupuser.html', {'form': UserCreationForm(), 'error': 'That username has already been taken'})
+            else:
+                return render(request, 'notes/signupuser.html', {'form': UserCreationForm(), 'error': 'Passwords did not match'})
 
 def loginuser(request):
-    if request.method == "GET":
-        return render(request, 'notes/loginuser.html', {'form': AuthenticationForm()})
+    if request.user.is_authenticated:
+        return redirect('notes')
     else:
-        user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
-        if user is None:
-            return render(request, 'notes/loginuser.html', {'form': AuthenticationForm(), 'error': 'Username and password did not match'})
+        if request.method == "GET":
+            return render(request, 'notes/loginuser.html', {'form': AuthenticationForm()})
         else:
-            login(request, user)
-            return redirect('notes')
+            user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
+            if user is None:
+                return render(request, 'notes/loginuser.html', {'form': AuthenticationForm(), 'error': 'Username and password did not match'})
+            else:
+                login(request, user)
+                return redirect('notes')
 
 def logoutuser(request):
     if request.method == 'POST':
