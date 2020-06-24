@@ -56,13 +56,11 @@ def add(request):
         return render(request, 'notes/addnote.html', {'form': NoteForm()})
     else:
         form = NoteForm(request.POST)
-        if form.is_valid():
-            note = form.save(commit=False)
-            note.user = request.user
-            if not note.text and not note.title:
-                return redirect('notes')
-            else:
-                note.save()
+        note = form.save(commit=False)
+        note.user = request.user
+        if not note.title:
+            note.title = 'New note'
+        note.save() 
         return redirect('notes')   
 
 def notes(request):
@@ -84,10 +82,10 @@ def note(request, note_pk):
         return render(request, 'notes/note.html', {'note': note, 'form': form})  
     else:
         form = NoteForm(request.POST, instance=note)
-        if form.is_valid():
-            form.save()
-        else:
-            note.delete()
+        note = form.save()
+        if not note.title:
+            note.title = 'New note'
+        form.save()
     return redirect('notes')
 
 def delete(request, note_pk):
