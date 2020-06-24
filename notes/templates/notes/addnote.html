@@ -5,6 +5,25 @@
     <title>Add note | n0tes</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- {{ form.media }} -->
+    <script src="https://cdn.tiny.cloud/1/bq2e25erbfjw06gx49ky7pwwexnwzzxj858jzcakrxfy2zx2/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            height: 500,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+            ],
+            toolbar: 'undo redo | formatselect | ' +
+            'bold italic backcolor | alignleft aligncenter ' +
+            'alignright alignjustify | bullist numlist outdent indent | ' +
+            'removeformat | help',
+            content_css: '//www.tiny.cloud/css/codepen.min.css'
+            });
+    </script>
 </head>
 <body>
     <h2>Add note</h2>
@@ -14,6 +33,5 @@
         {{ form.as_p }}
         <button type="submit">Save</button>
     </form>
-
 </body>
 </html>
