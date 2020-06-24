@@ -67,7 +67,7 @@ def important(request):
     important = Note.objects.filter(user=request.user, important=True).order_by('-date')
     return render(request, 'notes/important.html', {'important': important})
 
-def archive(request):
+def showarchive(request):
     archive = Note.objects.filter(user=request.user, archive=True).order_by('-date')
     return render(request, 'notes/archive.html', {'archive': archive})   
 
@@ -89,6 +89,16 @@ def delete(request, note_pk):
     if request.method == 'POST':
         note.delete()
         return redirect('notes')
+
+def archive(request, note_pk):
+    note = get_object_or_404(Note, pk=note_pk, user=request.user)
+    if request.method == 'POST':
+        note.archive = not note.archive
+        note.save()
+        if note.archive:
+            return redirect('showarchive')
+        else:
+            return redirect('notes')
 
 def search(request):
     if request.method == "GET":

@@ -13,9 +13,10 @@ urlpatterns = [
     path('notes/', views.notes, name='notes'),
     path('note/<int:note_pk>/', views.note, name='note'),
     path('important/', views.important, name='important'),
-    path('archive/', views.archive, name='archive'),
+    path('archive/', views.showarchive, name='showarchive'),
     path('add/', views.add, name='add'),
     path('note/<int:note_pk>/delete', views.delete, name='delete'),
+    path('note/<int:note_pk>/archive', views.archive, name='archive'),
     path('search/', views.search, name='search'),
 ]
 
