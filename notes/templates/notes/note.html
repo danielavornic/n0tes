@@ -29,6 +29,11 @@
             {{ form.as_p }}
             <button type="submit">Save</button>
         </form>
+
+        <form method="POST" action="{% url 'delete' note.id %}">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
     </div>
 </body>
 </html>

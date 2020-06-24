@@ -60,15 +60,15 @@ def add(request):
         return redirect('notes')   
 
 def notes(request):
-    usernotes = Note.objects.filter(user=request.user, archive=False)
+    usernotes = Note.objects.filter(user=request.user, archive=False).order_by('-date')
     return render(request, 'notes/notes.html', {'notes': usernotes})
 
 def important(request):
-    important = Note.objects.filter(user=request.user, important=True)
+    important = Note.objects.filter(user=request.user, important=True).order_by('-date')
     return render(request, 'notes/important.html', {'important': important})
 
 def archive(request):
-    archive = Note.objects.filter(user=request.user, archive=True)
+    archive = Note.objects.filter(user=request.user, archive=True).order_by('-date')
     return render(request, 'notes/archive.html', {'archive': archive})   
 
 def note(request, note_pk):
@@ -79,8 +79,13 @@ def note(request, note_pk):
     else:
         form = NoteForm(request.POST, instance=note)
         if form.is_valid():
-            if not note.text and not note.title:
-                note.delete()
-            else:
-                form.save()
-    return redirect('notes')   
+            form.save()
+        else:
+            note.delete()
+    return redirect('notes')
+
+def delete(request, note_pk):
+    note = get_object_or_404(Note, pk=note_pk, user=request.user)
+    if request.method == 'POST':
+        note.delete()
+        return redirect('notes')

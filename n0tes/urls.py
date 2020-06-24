@@ -15,6 +15,7 @@ urlpatterns = [
     path('important/', views.important, name='important'),
     path('archive/', views.archive, name='archive'),
     path('add/', views.add, name='add'),
+    path('note/<int:note_pk>/delete', views.delete, name='delete'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
