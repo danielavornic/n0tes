@@ -89,3 +89,11 @@ def delete(request, note_pk):
     if request.method == 'POST':
         note.delete()
         return redirect('notes')
+
+def search(request):
+    if request.method == "GET":
+        keyword = request.GET.get('keyword', None);
+        if keyword:
+            notes = Note.objects.filter(title__icontains=keyword) | Note.objects.filter(text__icontains=keyword)
+            return render(request, 'notes/search.html', {'notes': notes, 'keyword': keyword})  
+    return render(request, 'notes/search.html') 
