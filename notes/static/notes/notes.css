@@ -1,0 +1,151 @@
+#mainRow {
+    height: 100vh
+}
+
+#menu {
+    background-color: var(--dark-blue);
+    color: white;
+    padding: 28px 24px;
+    overflow-x: hidden;
+}
+
+#user {
+    width: 100%;
+    position: relative;
+}
+
+#userPic {
+    background-color: var(--purple);
+    float: left;
+    position: relative;
+    cursor: default;
+}
+
+#userPic p {
+    text-align: center;
+    margin-bottom: 0;
+    font-weight: bold;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 0;
+    right: 0;
+}
+
+#userInfo {
+    display: inline-block;
+    margin-left: 16px;
+}
+
+#userInfo p {
+    margin-bottom: 0;
+    cursor: default;
+}
+
+#logout {
+    color: var(--blue);
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    outline: none
+}
+
+#logout:focus {
+    outline: none
+}
+
+#logout:hover {
+    color: var(--purple)
+}
+
+
+#links {
+    margin-top: 48px;
+}
+
+#links ul {
+    list-style-type: none;
+    padding-left: 0
+}
+
+#links ul li {
+    margin-bottom: 16px;
+}
+
+#links a {
+    color: var(--blue);
+}
+
+#links a:hover {
+    color: white
+}
+
+#links span.medium-text {
+    vertical-align: top;
+    font-weight: normal;
+}
+
+#links .iconify {
+    margin-right: 12px;
+    font-size: 21px;
+}
+
+
+
+
+h1 {
+    margin-top: 24px;
+    display: inline-block;
+}
+
+#content a.btn {
+    padding: 12px 48px;
+    margin-top: 24px;
+    float: right
+}
+
+#notes, #noNotes {
+    margin-top: 24px;
+}
+
+#notes ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.note {
+    padding: 24px 36px;
+    border-radius: 10px;
+    box-shadow: 2px 5px 25px rgba(0, 0, 0, 0.12);
+    margin-bottom: 36px;
+}
+
+.note p {
+    display: inline
+}
+
+.note a {
+    color: black;
+    font-weight: normal;
+    display: block
+}
+
+.note .medium-text {
+    vertical-align: top;
+}
+
+.note .date {
+    color: var(--purple);
+    font-size: 14px
+}
+
+.note .note-text {
+    margin-top: 8px
+}
+
+.note .iconify {
+    font-size: 20px;
+    float: right;
+    color: var(--purple);
+    cursor: default
+}

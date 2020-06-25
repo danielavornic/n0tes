@@ -1,0 +1,60 @@
+<div class="col-sm-1 col-md-3 col-lg-2" id="menu">
+    <nav class="position-fixed">
+        <div id="user">
+            <div id="userPic">
+                <p class="large-text">{{ user.username|make_list|first|title }}</p>
+            </div>
+
+            <div id="userInfo">
+                <p title='{{ user.username }}'><b>{{ user.username|truncatechars:12 }}</b></p>
+                <form action="{% url 'logoutuser' %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" id="logout" title="Log out">Log out</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="links">
+            <ul>
+                <li>
+                    <a href="{% url 'notes' %}" id="noteLink">
+                        <span class="iconify" data-inline="false" data-icon="mdi:notebook-outline"></span>
+                        <span class="medium-text">All notes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'search' %}" id="searchLink">
+                        <span class="iconify" data-inline="false" data-icon="mdi:magnify"></span>
+                        <span class="medium-text">Search</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'important' %}" id="importantLink">
+                        <span class="iconify" data-inline="false" data-icon="mdi:bookmark-outline"></span>
+                        <span class="medium-text">Important</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'showarchive' %}" id="archiveLink">
+                        <span class="iconify" data-inline="false" data-icon="mdi:archive-outline"></span>
+                        <span class="medium-text">Archive</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="aboutLink">
+                        <span class="iconify" data-inline="false" data-icon="mdi:info-outline"></span>
+                        <span class="medium-text">About</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<script>
+    var userHeight = document.getElementById('userInfo').offsetHeight;
+    document.getElementById('userPic').style.height = userHeight + 'px';
+    document.getElementById('userPic').style.width = userHeight + 'px';
+
+    document.getElementById("{{ active }}").style.color = '#fff';
+</script>

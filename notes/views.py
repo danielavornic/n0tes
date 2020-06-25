@@ -58,22 +58,27 @@ def add(request):
         form = NoteForm(request.POST)
         note = form.save(commit=False)
         note.user = request.user
-        if not note.title:
+        if note.title:
+            note.save()
+        elif not note.title and note.text:
             note.title = 'New note'
-        note.save() 
+            note.save()
         return redirect('notes')   
 
 def notes(request):
     usernotes = Note.objects.filter(user=request.user, archive=False).order_by('-date')
-    return render(request, 'notes/notes.html', {'notes': usernotes})
+    active = 'noteLink'
+    return render(request, 'notes/notes.html', {'notes': usernotes, 'active': active})
 
 def important(request):
     important = Note.objects.filter(user=request.user, important=True).order_by('-date')
-    return render(request, 'notes/important.html', {'important': important})
+    active = 'importantLink'
+    return render(request, 'notes/important.html', {'important': important, 'active': active})
 
 def showarchive(request):
     archive = Note.objects.filter(user=request.user, archive=True).order_by('-date')
-    return render(request, 'notes/archive.html', {'archive': archive})   
+    active = 'archiveLink'
+    return render(request, 'notes/archive.html', {'archive': archive, 'active': active})   
 
 def note(request, note_pk):
     note = get_object_or_404(Note, pk=note_pk, user=request.user)
@@ -105,9 +110,10 @@ def archive(request, note_pk):
             return redirect('notes')
 
 def search(request):
+    active = 'archiveLink'
     if request.method == "GET":
         keyword = request.GET.get('keyword', None);
         if keyword:
-            notes = Note.objects.filter(title__icontains=keyword) | Note.objects.filter(text__icontains=keyword)
-            return render(request, 'notes/search.html', {'notes': notes, 'keyword': keyword})  
-    return render(request, 'notes/search.html') 
+            notes = Note.objects.filter(title__icontains=keyword, user=request.user) | Note.objects.filter(text__icontains=keyword, user=request.user)
+            return render(request, 'notes/search.html', {'notes': notes, 'keyword': keyword, 'active': active})  
+    return render(request, 'notes/search.html', {'active': active}) 
