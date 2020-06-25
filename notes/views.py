@@ -110,7 +110,7 @@ def archive(request, note_pk):
             return redirect('notes')
 
 def search(request):
-    active = 'archiveLink'
+    active = 'searchLink'
     if request.method == "GET":
         keyword = request.GET.get('keyword', None);
         if keyword:

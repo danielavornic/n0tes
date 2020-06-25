@@ -1,34 +1,64 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Search | n0tes</title>
+    <title>Search {{ keyword }} | n0tes</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Nunito+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'notes/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'notes/notes.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'notes/search.css' %}">
 </head>
 <body>
-    <div>
-        <form type="get" action=".">
-            <input  type="text" name="keyword"  value='{{ keyword }}' placeholder="Search..." >
-            <button type="submit" >Submit</button>
-        </form>
+    <div class="container-fluid">
+        <div class="row" id="mainRow">
 
-        {% if notes %}
-        <h1>Results for {{ keyword }}</h1>
-        {% endif %}
+            {% include "notes/navbar.html" %}
 
-        {% if keyword and not notes %}
-        <h1>No results found for {{ keyword }}</h1>
-        {% endif %}
+            <div class="col-sm-11 col-md-9 col-lg-10" id="content">
+                <div class="container">
+                   
+                    <form type="get" action="." id="search" class="form-inline">
+                        <input  class="col-sm-12 col-md-8 col-lg-9" type="text" name="keyword" value='{{ keyword }}' placeholder="Enter keyword">
+                        <div class="col-sm-12 col-md-4 col-lg-3"><button type="submit" class="medium-text btn" >Search</button></div>
+                    </form>
 
-        <ul>
-            {% for note in notes %}
-            <li>
-                <a href="{% url 'note' note.id %}">
-                    {% if note.title %} <b>{{ note.title }}</b> <br>{% endif %} 
-                    {% if note.text %} {{ note.text|safe|truncatechars:100 }}{% endif %} 
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
+                    {% if notes %}
+                    <h1>Results for {{ keyword }}</h1>
+                    <div id="notes">
+                        <ul>
+                            {% for note in notes %}
+                            <li class="note">
+                                <a href="{% url 'note' note.id %}">
+                                    <p class="medium-text"><b>{{ note.title }}</b></p>
+
+                                    {% if note.important %}
+                                    <span class="iconify" data-inline="false" data-icon="mdi:bookmark" title="Important"></span>
+                                    {% endif %}
+                                    <br>
+
+                                    <p class="date">{{ note.date|date:'d/m/Y' }}</p>
+                                    {% if note.text %}<div class="note-text">{{ note.text|striptags|truncatechars:200 }}</div>{% endif %} 
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    {% if keyword and not notes %}
+                    <div id="noNotes">
+                        <p class="text-center medium-text">No results found for {{ keyword }}</p>
+                    </div>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>        
     </div>
 </body>
 </html>

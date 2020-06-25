@@ -91,8 +91,6 @@
 }
 
 
-
-
 h1 {
     margin-top: 24px;
     display: inline-block;
@@ -105,7 +103,7 @@ h1 {
 }
 
 #notes, #noNotes {
-    margin-top: 24px;
+    margin-top: 28px;
 }
 
 #notes ul {
@@ -121,7 +119,8 @@ h1 {
 }
 
 .note p {
-    display: inline
+    display: inline;
+    white-space: nowrap;
 }
 
 .note a {
