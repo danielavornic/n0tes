@@ -87,11 +87,11 @@ def note(request, note_pk):
         return render(request, 'notes/note.html', {'note': note, 'form': form})  
     else:
         form = NoteForm(request.POST, instance=note)
-        note = form.save()
+        note = form.save(commit=False)
         if not note.title:
             note.title = 'New note'
         form.save()
-    return redirect('notes')
+        return render(request, 'notes/note.html', {'note': note, 'form': form})  
 
 def delete(request, note_pk):
     note = get_object_or_404(Note, pk=note_pk, user=request.user)

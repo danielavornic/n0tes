@@ -1,0 +1,84 @@
+label {
+    display: none
+}
+
+textarea {
+    border-radius: 10px !important;
+}
+
+#controlls {
+    margin: 28px auto;
+}
+
+#controlls form {
+    display: inline-block;
+    margin-right: 24px;
+}
+
+#controlls button:not(.btn), #controlls a  {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 36px;
+    color: var(--dark-blue);
+    vertical-align: middle;
+}
+
+#controlls a span {
+    font-size: 36px;
+}
+
+#controlls button[title="Delete"] {
+    color: red
+}
+
+#controlls #right {
+    float: right
+}
+
+#controlls button.btn {
+    padding: 12px 60px;
+    float: right;
+    margin-left: 24px
+}
+
+#controlls .iconify {
+    vertical-align: inherit !important;
+}
+
+#id_title {
+    display: inline-block;
+    font-size: 36px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    outline: none;
+    margin-bottom: 28px;
+    padding-left: 8px;
+    width: 100%
+}
+
+#id_title:focus {
+    border-bottom: 2px solid var(--purple);
+}
+
+#bookmark {
+    font-size: 36px;
+    color: var(--purple);
+    vertical-align: bottom;
+    float: left;
+}
+
+#id_important {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    z-index: 2;
+    opacity: 0;
+    cursor: pointer;
+}

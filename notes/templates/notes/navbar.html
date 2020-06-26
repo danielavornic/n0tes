@@ -55,6 +55,8 @@
     var userHeight = document.getElementById('userInfo').offsetHeight;
     document.getElementById('userPic').style.height = userHeight + 'px';
     document.getElementById('userPic').style.width = userHeight + 'px';
-
-    document.getElementById("{{ active }}").style.color = '#fff';
+    
+    if ("{{ active }}") {
+        document.getElementById("{{ active }}").style.color = '#fff';
+    }
 </script>
