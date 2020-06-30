@@ -8,7 +8,7 @@ var toggle = $('#toggle');
 
 toggle.click(function() {
     if (menu.outerHeight() == 60) {
-        menu.css('height', '100vh');
+        menu.css('height', '90vh');
         nav.css('display', 'block');
         toggle.children().first().css('transform', 'rotate(-45deg) translate(-4px, 4px)');
         toggle.children().eq(1).css('opacity', '0');
