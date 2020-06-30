@@ -1,17 +1,16 @@
-<div class="col-sm-1 col-md-3 col-lg-2" id="menu">
-    <nav class="position-fixed">
+<div class="col-sm-3 col-md-2 col-lg-2" id="menu">
+    <div id="toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav>
         <div id="user">
             <div id="userPic">
                 <p class="large-text">{{ user.username|make_list|first|title }}</p>
             </div>
-
-            <div id="userInfo">
-                <p title='{{ user.username }}'><b>{{ user.username|truncatechars:12 }}</b></p>
-                <form action="{% url 'logoutuser' %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit" id="logout" title="Log out">Log out</button>
-                </form>
-            </div>
+            <p id="userInfo" title='{{ user.username }}'>{{ user.username }}</p>
         </div>
 
         <div id="links">
@@ -41,9 +40,21 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" id="aboutLink">
+                    <a href="{% url 'about' %}" id="aboutLink">
                         <span class="iconify" data-inline="false" data-icon="mdi:info-outline"></span>
                         <span class="medium-text">About</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" id="logout">
+                        <form action="{% url 'logoutuser' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" id="logout" title="Log out">
+                                <span class="iconify" data-inline="false" data-icon="ri:logout-box-line"></span>
+                                <span class="medium-text">Log out</span>
+                            </button>
+                        </form>
                     </a>
                 </li>
             </ul>
@@ -52,10 +63,6 @@
 </div>
 
 <script>
-    var userHeight = document.getElementById('userInfo').offsetHeight;
-    document.getElementById('userPic').style.height = userHeight + 'px';
-    document.getElementById('userPic').style.width = userHeight + 'px';
-    
     if ("{{ active }}") {
         document.getElementById("{{ active }}").style.color = '#fff';
     }

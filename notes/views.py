@@ -117,3 +117,7 @@ def search(request):
             notes = Note.objects.filter(title__icontains=keyword, user=request.user) | Note.objects.filter(text__icontains=keyword, user=request.user)
             return render(request, 'notes/search.html', {'notes': notes, 'keyword': keyword, 'active': active})  
     return render(request, 'notes/search.html', {'active': active}) 
+
+def about(request):
+    active = 'aboutLink'
+    return render(request, 'notes/about.html', {'active': active})

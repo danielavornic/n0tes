@@ -2,6 +2,9 @@ tinymce.init({
     selector: 'textarea',
     height: 500,
     menubar: false,
+    mobile: {
+        theme: 'mobile'
+    },
     plugins: [
         'advlist autoresize autosave autolink lists checklist link charmap',
         ' visualblocks emoticons',
@@ -9,18 +12,21 @@ tinymce.init({
     ],
     toolbar: 'undo redo | formatselect | bold italic underline |' + 
     'alignleft aligncenter alignright alignjustify | ' + 
-    ' numlist bullist checklist  | charmap emoticons | link table | ',
+    ' numlist bullist checklist  | link charmap emoticons',
 });
 
 
 $('document').ready(function() {
     var check = $('#id_important');
     var title= $('#id_title');
-    title.parent().css('display', 'inline-block')
+    title.parent().css({
+        'display': 'inline-block',
+        'width': 'calc(100% - 41px)'
+    })
     check.parent().css({
         'display': 'inline-block',
         'position': 'relative',
-        'verticalAlign': '-8px'
+        'verticalAlign': '-11px'
     })
 
     function bookmark() {
@@ -39,14 +45,6 @@ $('document').ready(function() {
     bookmark();
     check.on('change', bookmark)
 
-    setTimeout(function() {
-        var titleWidth = $('#form').width() - $('#id_important').width() - 5;
-        $('#id_title').parent().css('width', titleWidth + 'px')
-    }, 900)
-
-    title.parent().next().css({
-        'box-shadow': '2px 5px 25px rgba(0, 0, 0, 0.12)',
-    })
 
     var somethingChanged = false;
     $('#form').change(function() { 

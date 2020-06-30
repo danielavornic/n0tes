@@ -57,7 +57,8 @@ textarea {
     outline: none;
     margin-bottom: 28px;
     padding-left: 8px;
-    width: 100%
+    width: 100%;
+    
 }
 
 #id_title:focus {
@@ -82,4 +83,43 @@ textarea {
     z-index: 2;
     opacity: 0;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    #controlls button:not(.btn), #controlls a {
+        font-size: 30px;
+        
+    }
+
+    #controlls .iconify {
+        vertical-align: middle !important;
+    }
+
+    #controlls button.btn {
+        padding: 12px 48px;
+    }
+
+    #id_title {
+        font-size: 28px
+    }
+}
+
+@media (max-width: 376px) {
+    #controlls form {
+        margin-right: 16px;
+    }
+
+    #controlls button.btn {
+        margin-left: 16px
+    }
+}
+
+@media (max-width: 320px) {
+    #controlls button.btn {
+        padding: 10px 36px;
+    }
+
+    #controlls form {
+        margin-right: 12px;
+    }
 }

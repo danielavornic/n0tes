@@ -26,3 +26,16 @@ input:focus, input:hover {
 #search .col-md-2 {
     padding-right: 0
 }
+
+@media (max-width: 768px) {
+    .col-sm-12.col-md-4.col-lg-3 {
+        padding: 0;
+        margin-top: 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    #notes, #noNotes {
+        margin-top: 28px !important;
+    }
+}

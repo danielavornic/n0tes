@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About | n0tes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Nunito+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'notes/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'notes/notes.css' %}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row" id="mainRow">
+
+            {% include "notes/navbar.html" %}
+
+            <div class="col-sm-9 col-md-10 col-lg-10" id="content">
+                <div class="container">
+
+                    <h1>About</h1>
+                    
+                </div>
+            </div>
+        </div>        
+    </div>
+    
+</body>
+</html>

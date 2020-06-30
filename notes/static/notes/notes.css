@@ -7,6 +7,36 @@
     color: white;
     padding: 28px 24px;
     overflow-x: hidden;
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    z-index: 10;
+    height: 100vh;
+    transition: all 500ms ease 0s;
+}
+
+nav {
+    transition: all 500ms ease 0s;
+}
+
+#toggle {
+    display: none;
+    float: right;
+    cursor: pointer;
+    margin-bottom: 24px;
+}
+  
+#toggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    margin-bottom: 5px;
+    background: white;
+    border-radius: 3px;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+
 }
 
 #user {
@@ -16,9 +46,13 @@
 
 #userPic {
     background-color: var(--purple);
-    float: left;
     position: relative;
     cursor: default;
+    display: block;
+    margin: 0 auto;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 10px;
 }
 
 #userPic p {
@@ -33,34 +67,35 @@
 }
 
 #userInfo {
-    display: inline-block;
-    margin-left: 16px;
-}
-
-#userInfo p {
     margin-bottom: 0;
     cursor: default;
+    text-align: center;
+    font-weight: bold;
+    word-break: break-word;
 }
 
-#logout {
+button#logout {
     color: var(--blue);
     padding: 0;
     border: none;
     background-color: transparent;
-    outline: none
-}
-
-#logout:focus {
-    outline: none
+    outline: none;
+    position: absolute;
+    bottom: 28px;
 }
 
 #logout:hover {
-    color: var(--purple)
+    color: white
+}
+
+#logout:focus {
+    outline: none;
+    width: inline;
 }
 
 
 #links {
-    margin-top: 48px;
+    margin-top: 36px;
 }
 
 #links ul {
@@ -86,14 +121,19 @@
 }
 
 #links .iconify {
-    margin-right: 12px;
+    margin-right: 10px;
     font-size: 21px;
 }
 
 
 h1 {
-    margin-top: 28px;
+    margin-top: 36px;
     display: inline-block;
+}
+
+#content {
+    position: absolute;
+    right: 0;
 }
 
 #content a.btn {
@@ -126,7 +166,6 @@ h1 {
 .note a {
     color: black;
     font-weight: normal;
-    /* display: block */
 }
 
 .note .medium-text {
@@ -147,4 +186,95 @@ h1 {
     float: right;
     color: var(--purple);
     cursor: default
+}
+
+@media (min-width: 1144px) {
+    #menu {
+        padding: 28px 28px !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    #menu {
+        padding: 28px 20px !important;
+    }
+}
+
+
+@media (max-width: 991px) {
+    #menu {
+        padding: 28px 18px !important;
+    }
+
+    #links .iconify {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) { 
+    #menu {
+        padding: 28px 16px !important;
+    }
+
+    #links .iconify {
+        display: inline-block;
+        margin-right: 8px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    #toggle {
+        display: block;
+        float: right;
+    }
+
+    #menu {
+        height: 60px;
+        padding: 24px 16px !important;
+    }
+
+    #content {
+        top: 60px;
+    }
+
+    #content a.btn {
+        padding: 12px 30px !important;
+    }
+
+    nav {
+        display: none
+    }
+
+    #user {
+        margin-top: 54px
+    }
+
+    #content a.btn {
+        width: 100% !important;
+        margin-top: 16px;
+    }
+
+    #notes, #noNotes {
+        margin-top: 112px;
+    }
+
+    h1 {
+        text-align: center;
+        display: block
+    }
+
+    #links ul {
+        display: block;
+        width: 122px;
+        margin: 0 auto;
+    }
+
+    #links span.medium-text {
+        vertical-align: middle;
+        font-size: 20px
+    }
+
+    #userInfo {
+        font-size: 20px
+    }
 }
