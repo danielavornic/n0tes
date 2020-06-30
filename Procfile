@@ -1,0 +1,1 @@
+web: gunicorn n0tes.wsgi
