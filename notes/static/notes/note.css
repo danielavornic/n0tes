@@ -104,6 +104,12 @@ textarea {
     }
 }
 
+@media (max-width: 576px) {
+    #controlls {
+        margin-bottom: 36px;
+    }
+}
+
 @media (max-width: 376px) {
     #controlls form {
         margin-right: 16px;
