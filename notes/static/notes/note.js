@@ -6,13 +6,13 @@ tinymce.init({
         theme: 'mobile'
     },
     plugins: [
-        'advlist autoresize autosave autolink lists checklist link charmap',
+        'advlist autoresize autosave autolink lists link charmap',
         ' visualblocks emoticons',
         'media table paste code help wordcount'
     ],
     toolbar: 'undo redo | formatselect | bold italic underline |' + 
     'alignleft aligncenter alignright alignjustify | ' + 
-    ' numlist bullist checklist  | link charmap emoticons',
+    ' numlist bullist | link charmap emoticons',
 });
 
 
