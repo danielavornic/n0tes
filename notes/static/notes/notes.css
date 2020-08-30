@@ -184,19 +184,12 @@ h1 {
 }
 
 .note .date {
-    color: var(--purple);
+    color: var(--dark-blue);
     font-size: 14px
 }
 
 .note .note-text {
     margin-top: 8px
-}
-
-.note .iconify {
-    font-size: 20px;
-    float: right;
-    color: var(--purple);
-    cursor: default
 }
 
 @media (min-width: 1144px) {

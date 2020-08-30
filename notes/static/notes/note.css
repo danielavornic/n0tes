@@ -58,7 +58,7 @@ textarea {
     margin-bottom: 28px;
     padding-left: 8px;
     width: 100%;
-    
+    background: transparent;
 }
 
 #id_title:focus {

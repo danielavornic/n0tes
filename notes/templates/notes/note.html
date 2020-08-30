@@ -26,9 +26,7 @@
             <div class="col-sm-9 col-md-10 col-lg-10" id="content">
                 <div class="container">
 
-                    <div id="controlls">
-                        <a href="{% url 'notes' %}" title="Go Back"><span class="iconify" data-icon="mdi:chevron-left"></span></a>
-                        
+                    <div id="controlls">                        
                         <div id="right">
                             <form method="POST" action="{% url 'delete' note.id %}">
                                 {% csrf_token %}
@@ -46,7 +44,7 @@
                                 <button type="submit" title="Archive"><span class="iconify" data-icon="mdi:archive-arrow-down-outline"></span></button>
                             </form>
                             {% endif %}
-
+                            
                             <button type="submit" class="medium-text btn" form="form">Save</button>
                         </div>
                     </div>

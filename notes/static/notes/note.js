@@ -21,14 +21,16 @@ $('document').ready(function() {
     var title= $('#id_title');
     title.parent().css({
         'display': 'inline-block',
-        'width': 'calc(100% - 41px)'
+        'width': '100%',
+        'margin-top': '28px'
     })
     check.parent().css({
         'display': 'inline-block',
         'position': 'relative',
-        'verticalAlign': '-11px'
+        'float': 'right',
+        'margin-top': '11px',
+        'margin-right': '24px'
     })
-
     function bookmark() {
         var mark = $('#bookmark');
         if (mark) {
