@@ -46,20 +46,4 @@ $('document').ready(function() {
     }
     bookmark();
     check.on('change', bookmark)
-
-
-    var somethingChanged = false;
-    $('#form').change(function() { 
-        somethingChanged = true; 
-    }); 
-    $('#form').submit(function(e) {
-        somethingChanged = false;
-    });
-
-    $(window).bind('beforeunload', function(e) {
-        if (somethingChanged)
-            return "You made some changes and it's not saved?";
-        else 
-            e = null; 
-    });
 })
