@@ -71,7 +71,7 @@ def notes(request):
     return render(request, 'notes/notes.html', {'notes': usernotes, 'active': active})
 
 def important(request):
-    important = Note.objects.filter(user=request.user, important=True).order_by('-date')
+    important = Note.objects.filter(user=request.user, important=True, archive=False).order_by('-date')
     active = 'importantLink'
     return render(request, 'notes/important.html', {'important': important, 'active': active})
 
