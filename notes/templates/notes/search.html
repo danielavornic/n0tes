@@ -32,17 +32,13 @@
                     <div id="notes">
                         <ul>
                             {% for note in notes %}
-                            <li class="note">
+                            <li class="note {% if note.important %} important{% endif %}">
                                 <a href="{% url 'note' note.id %}">
-                                    <p class="medium-text"><b>{{ note.title }}</b></p>
-
-                                    {% if note.important %}
-                                    <span class="iconify" data-inline="false" data-icon="mdi:bookmark" title="Important"></span>
-                                    {% endif %}
-                                    <br>
-
-                                    <p class="date">{{ note.date|date:'d/m/Y' }}</p>
-                                    {% if note.text %}<div class="note-text">{{ note.text|striptags|truncatechars:200 }}</div>{% endif %} 
+                                    <div class="medium-text"><b>{{ note.title|truncatechars:50 }}</b></div>
+                                    <div class="date">{{ note.date|date:'d/m/Y' }}</div>
+                                    {% if note.text %}
+                                    <div class="note-text">{{ note.text|striptags|truncatechars:150 }}</div>
+                                    {% endif %} 
                                 </a>
                             </li>
                             {% endfor %}
