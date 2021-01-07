@@ -4,18 +4,18 @@
 }
 
 input {
-    padding: 20px 24px;
+    padding: 16px 24px;
     border-radius: 10px;
     background: #FFFFFF;
-    box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.15);
+    border: 2px solid #F2F2F2!important;
     width: auto;
-    border: none;
-    transition: box-shadow 300ms ease-in-out;
+    transition: all 200ms ease-in-out;
 }
 
 input:focus, input:hover {
     outline: none;
-    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.25);
+    background: #FAFAFA;
+    border: 2px solid #212529!important;
 }
 
 form .btn {

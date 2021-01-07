@@ -13,6 +13,7 @@
     z-index: 10;
     height: 100vh;
     transition: all 500ms ease 0s;
+    overflow: hidden;
 }
 
 nav {
@@ -108,11 +109,11 @@ button#logout {
 }
 
 #links a {
-    color: var(--blue);
+    color: var(--gray);
 }
 
 #links a:hover {
-    color: white
+    color: white;
 }
 
 #links span.medium-text {
@@ -124,7 +125,6 @@ button#logout {
     margin-right: 10px;
     font-size: 21px;
 }
-
 
 h1 {
     margin-top: 36px;
@@ -139,7 +139,7 @@ h1 {
 #content a.btn {
     padding: 12px 48px;
     margin-top: 28px;
-    float: right
+    float: right;
 }
 
 #notes, #noNotes {
@@ -157,7 +157,12 @@ h1 {
 .note {
     padding: 28px;
     border-radius: 10px;
-    background-color: #f6f7fb;
+    border: 3px solid var(--purple)
+}
+
+.note:hover {
+    background-color: #FAFAFA;
+    border: 3px solid var(--dark-blue)
 }
 
 .note.important {

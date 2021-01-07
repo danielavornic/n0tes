@@ -2,10 +2,6 @@ label {
     display: none
 }
 
-textarea {
-    border-radius: 10px !important;
-}
-
 #controlls {
     margin: 28px auto;
 }
@@ -21,16 +17,16 @@ textarea {
     border: none;
     outline: none;
     font-size: 36px;
-    color: var(--dark-blue);
+    color: var(--purple);
     vertical-align: middle;
 }
 
-#controlls a span {
-    font-size: 36px;
+#controlls a:hover {
+    color: var(--dark-blue);
 }
 
-#controlls button[title="Delete"], #controlls a[title="Delete"] {
-    color: red
+#controlls a span {
+    font-size: 28px;
 }
 
 #controlls #right {
@@ -51,7 +47,7 @@ textarea {
     display: inline-block;
     font-size: 36px;
     font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
     border: none;
     border-bottom: 2px solid var(--purple);
     outline: none;
@@ -86,11 +82,6 @@ textarea {
 }
 
 @media (max-width: 768px) {
-    #controlls button:not(.btn), #controlls a {
-        font-size: 30px;
-        
-    }
-
     #controlls .iconify {
         vertical-align: middle !important;
     }
@@ -108,24 +99,30 @@ textarea {
     #controlls {
         margin-bottom: 36px;
     }
-}
 
-@media (max-width: 376px) {
     #controlls form {
-        margin-right: 16px;
-    }
-
-    #controlls button.btn {
-        margin-left: 16px
+        margin-right: 20px;
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 420px) {
     #controlls button.btn {
         padding: 10px 36px;
     }
 
     #controlls form {
         margin-right: 12px;
+    }
+
+    #controlls form {
+        margin-right: 14px;
+    }
+
+    #controlls button.btn {
+        margin-left: 14px
+    }
+
+    #controlls button:not(.btn), #controlls a, #bookmark  {
+        font-size: 28px;
     }
 }
