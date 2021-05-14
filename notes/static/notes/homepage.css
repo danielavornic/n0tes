@@ -32,3 +32,13 @@ a.btn {
     padding: 12px 48px;
     margin-right: 24px;
 }
+
+@media (max-width: 576px) {
+    #welcomeCard {
+        padding: 40px 36px;
+    }
+
+    #description {
+        margin: 36px auto 36px;
+    }
+}
