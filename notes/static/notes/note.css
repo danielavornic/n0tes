@@ -85,8 +85,8 @@ label {
 
 @media (min-width: 991px) {
     #form p:nth-child(3), #form p:nth-child(4){
-        width: 84%;
-        margin-left: 8%;
+        width: 80%;
+        margin-left: 10%;
     }
 }
 
