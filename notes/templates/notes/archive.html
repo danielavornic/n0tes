@@ -31,11 +31,15 @@
                             {% for note in archive %}
                             <li class="note {% if note.important %} important{% endif %}">
                                 <a href="{% url 'note' note.id %}">
-                                    <div class="medium-text"><b>{{ note.title|truncatechars:50 }}</b></div>
-                                    <div class="date">{{ note.date|date:'d/m/Y' }}</div>
-                                    {% if note.text %}
-                                    <div class="note-text">{{ note.text|striptags|truncatechars:150 }}</div>
-                                    {% endif %} 
+                                    <div class="note-info">
+                                        <div class="note-content">
+                                            <div class="medium-text"><b>{{ note.title|truncatechars:50 }}</b></div>
+                                            {% if note.text %}
+                                            <div class="note-text">{{ note.text|striptags|truncatechars:150 }}</div>
+                                            {% endif %} 
+                                        </div>
+                                        <div class="date">{{ note.date|date:'d M Y' }}</div>
+                                    </div> 
                                 </a>
                             </li>
                             {% endfor %}
