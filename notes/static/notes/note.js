@@ -1,5 +1,5 @@
 tinymce.init({
-    selector: 'textarea',
+    selector: '#id_text',
     placeholder: 'Start typing…',
     menubar: false,
     mobile: {
@@ -16,6 +16,12 @@ tinymce.init({
 });
 
 $('document').ready(function() {
+    $('#id_title').height($('#id_title').prop('scrollHeight'));
+    $('#id_title').on('input', function () {
+        $(this).height('auto');
+        $(this).height($(this).prop('scrollHeight'));
+    });
+
     var check = $('#id_important');
     check.parent().css({
         'display': 'inline-block',

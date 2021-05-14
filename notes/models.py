@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 
 class Note(models.Model):
-    title = models.CharField(max_length=100, blank=True)
+    title = models.TextField(max_length=100)
     text = HTMLField(blank=True)
     date = models.DateTimeField(auto_now_add=True)
     important = models.BooleanField(default=False)

@@ -43,23 +43,24 @@ label {
     vertical-align: inherit !important;
 }
 
+#form p:nth-child(3), #form p:nth-child(4){
+    width: 100%;
+    margin: 0;
+}
+
 #id_title {
     display: inline-block;
     font-size: 36px;
     font-weight: bold;
     font-family: 'Inter', sans-serif;
-    margin-bottom: -4px;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    outline: none;
-    padding-left: 8px;
+    margin-bottom: -8px;
+    margin-top: 24px;
     width: 100%;
+    border: none;
+    outline: none;
     background: transparent;
-    margin-top: 24px
-}
-
-#id_title:focus {
-    border-bottom: 1px solid var(--dark-blue);
+    resize: none;
+    overflow: hidden;
 }
 
 #bookmark {
@@ -80,11 +81,6 @@ label {
     z-index: 2;
     opacity: 0;
     cursor: pointer;
-}
-
-#form p:nth-child(3), #form p:nth-child(4){
-    width: 100%;
-    margin-left: 0;
 }
 
 @media (min-width: 991px) {
