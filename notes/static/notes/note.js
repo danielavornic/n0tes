@@ -1,5 +1,6 @@
 tinymce.init({
     selector: 'textarea',
+    placeholder: 'Start typing…',
     menubar: false,
     mobile: {
         theme: 'mobile'
@@ -44,6 +45,4 @@ $('document').ready(function() {
     }
     bookmark();
     check.on('change', bookmark);
-
-    tinyMCE.get('form').focus()
 })

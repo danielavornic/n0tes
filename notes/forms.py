@@ -7,5 +7,5 @@ class NoteForm(ModelForm):
         model = Note
         fields = ['important', 'title', 'text' ]
         widgets = {
-            'title': forms.TextInput(attrs = {'placeholder': 'New Note'}),
+            'title': forms.TextInput(attrs = {'placeholder': 'Untitled'})
         }

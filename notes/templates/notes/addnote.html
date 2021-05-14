@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add note | n0tes</title>
+    <title>Untitled | n0tes</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&family=Nunito+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -19,6 +19,20 @@
     <script src="{% static 'notes/note.js' %}"></script>
 </head>
 <body>
+    <style>
+        .tox-tinymce {
+            border: none;
+        }
+
+        .tox .tox-statusbar {
+            display: none;
+        }
+
+        .tox .tox-toolbar__primary {
+            border-left: 1px solid rgb(204, 204, 204);
+            border-right: 1px solid rgb(204, 204, 204);
+        }
+    </style>
 
     <div class="container-fluid">
         <div class="row" id="mainRow">
