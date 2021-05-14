@@ -8,18 +8,27 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
+}
+
+#welcomeCard {
+    border: 3px solid var(--purple);
+    padding: 48px 64px;
+    border-radius: 10px;
+    background-color: white;
 }
 
 #description {
-    margin: 48px auto;
+    margin: 36px auto 48px;
+}
+
+#loginButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 a.btn {
     padding: 12px 48px;
     margin-right: 24px;
-}
-
-h1 {
-    font-size: 48px
 }

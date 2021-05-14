@@ -5,6 +5,10 @@
     --gray: #cecece;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
     font-family: 'Nunito Sans', sans-serif;
 }
