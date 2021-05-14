@@ -1,6 +1,5 @@
 tinymce.init({
     selector: 'textarea',
-    height: 500,
     menubar: false,
     mobile: {
         theme: 'mobile'
@@ -8,13 +7,12 @@ tinymce.init({
     plugins: [
         'advlist autoresize autosave autolink lists link charmap',
         ' visualblocks emoticons',
-        'media table paste code help wordcount'
+        'media table paste code wordcount'
     ],
     toolbar: 'undo redo | formatselect | bold italic underline |' + 
     'alignleft aligncenter alignright alignjustify | ' + 
     ' numlist bullist | link charmap emoticons',
 });
-
 
 $('document').ready(function() {
     var check = $('#id_important');
@@ -22,7 +20,7 @@ $('document').ready(function() {
     title.parent().css({
         'display': 'inline-block',
         'width': '100%',
-        'margin-top': '28px'
+        'margin-top': '24px'
     })
     check.parent().css({
         'display': 'inline-block',
@@ -45,5 +43,7 @@ $('document').ready(function() {
         check.parent().append(mark);
     }
     bookmark();
-    check.on('change', bookmark)
+    check.on('change', bookmark);
+
+    tinyMCE.get('form').focus()
 })

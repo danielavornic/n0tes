@@ -48,17 +48,17 @@ label {
     font-size: 36px;
     font-weight: bold;
     font-family: 'Inter', sans-serif;
+    margin-bottom: -4px;
     border: none;
-    border-bottom: 2px solid var(--purple);
+    border-bottom: 1px solid #ccc;
     outline: none;
-    margin-bottom: 28px;
     padding-left: 8px;
     width: 100%;
     background: transparent;
 }
 
 #id_title:focus {
-    border-bottom: 2px solid var(--dark-blue);
+    border-bottom: 1px solid var(--dark-blue);
 }
 
 #bookmark {
