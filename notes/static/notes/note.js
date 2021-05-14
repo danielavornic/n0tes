@@ -17,12 +17,6 @@ tinymce.init({
 
 $('document').ready(function() {
     var check = $('#id_important');
-    var title= $('#id_title');
-    title.parent().css({
-        'display': 'inline-block',
-        'width': '100%',
-        'margin-top': '24px'
-    })
     check.parent().css({
         'display': 'inline-block',
         'position': 'relative',
