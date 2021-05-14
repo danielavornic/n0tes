@@ -30,7 +30,9 @@
                         <div id="right">
                             <form method="POST" action="{% url 'delete' note.id %}">
                                 {% csrf_token %}
-                                <button type="submit" title="Delete"><span class="iconify" data-icon="mdi:trash-can-outline"></span></button>
+                                <button type="submit" title="Delete" onclick="return confirm('Are you sure you want to delete this note?')">
+                                    <span class="iconify" data-icon="mdi:trash-can-outline"></span>
+                                </button>
                             </form>
                     
                             {% if note.archive %}
