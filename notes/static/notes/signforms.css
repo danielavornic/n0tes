@@ -58,6 +58,12 @@ input:focus, input:hover {
     }    
 }
 
+@media (max-width: 576px) {
+    #imageLeft {
+        display: none!important;
+    }
+}
+
 @media (max-width: 480px) { 
     input, .btn {
         width: 320px
