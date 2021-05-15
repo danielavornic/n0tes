@@ -7,14 +7,14 @@
 }
 
 #mainRow {
-    height: 100vh
+    height: 100vh;
+    position: relative;
 }
 
 #menu {
     background-color: var(--black, #121212);
     color: white;
     padding: 28px 0;
-    overflow-x: hidden;
     position: fixed;
     top: 0;
     height: 100vh;
