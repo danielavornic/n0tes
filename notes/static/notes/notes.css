@@ -29,26 +29,6 @@ nav {
     height: 100%;
 }
 
-#toggle {
-    display: none;
-    float: right;
-    cursor: pointer;
-    margin-bottom: 24px;
-}
-  
-#toggle span {
-    display: block;
-    width: 28px;
-    height: 3px;
-    margin-bottom: 5px;
-    background: white;
-    border-radius: 3px;
-    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-                opacity 0.55s ease;
-
-}
-
 #profileLink {
     position: absolute;
     bottom: 28px;
@@ -172,10 +152,6 @@ h1 {
     margin-top: 28px
 }
 
-@media (max-width: 1280px) {
-
-}
-
 @media (max-width: 1024px) {
     .col-sm-1 {
         max-width: 8%;
@@ -198,58 +174,44 @@ h1 {
 }
 
 @media (max-width: 576px) {
-    #toggle {
-        display: block;
-        float: right;
+    .col-sm-1 {
+        max-width: 100%;
     }
+    
+    .col-sm-11 {
+        max-width: 100%
+    } 
 
     #menu {
-        height: 60px;
-        padding: 24px 16px !important;
-    }
-
-    #content {
-        top: 60px;
-    }
-
-    #content a.btn {
-        padding: 12px 30px !important;
-    }
-
-    nav {
-        display: none
-    }
-
-    #user {
-        margin-top: 54px
-    }
-
-    #content a.btn {
-        width: 100% !important;
-        margin-top: 16px;
-    }
-
-    #notes, #noNotes {
-        margin-top: 112px;
-    }
-
-    h1 {
-        text-align: center;
-        display: block
+        height: 48px;
+        padding: 0 !important;
+        bottom: 0;
+        top: initial
     }
 
     #links ul {
-        display: block;
-        width: 122px;
-        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: nowrap;
+        margin-bottom: 0;
+        height: 100%;
     }
 
-    #links span.medium-text {
-        vertical-align: middle;
-        font-size: 20px
+    #links ul li {
+        margin-bottom: 0;
     }
 
-    #userInfo {
-        font-size: 20px
+    h1 {
+        display: block
+    }
+
+    #profileLink {
+        position: initial;
+    }
+
+    #links .iconify {
+        font-size: 22px;
     }
 }
