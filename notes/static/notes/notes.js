@@ -2,11 +2,14 @@ $('.note-text').each(function(){
     $(this).html($(this).html().replace(/&amp;nbsp;/gi,''));
 });
 
-var originalSize = $(window).width() + $(window).height();
+var isTouch = ('ontouchstart' in document.documentElement);
+var originalHeight = $(window).height();
 $(window).resize(function() {
-    if ($(window).width() + $(window).height() != originalSize){
-        $('#menu').hide();
-    } else {
-        $('#menu').show();
+    if (isTouch) {
+        if ($(window).height() < originalSize){
+            $('#menu').hide();
+        } else {
+            $('#menu').show();
+        }
     }
 });
