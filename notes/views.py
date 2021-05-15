@@ -119,3 +119,8 @@ def search(request):
 def about(request):
     active = 'aboutLink'
     return render(request, 'notes/about.html', {'active': active})
+
+def profile_page(request):
+    active = 'profileLink'
+    user_notes = Note.objects.filter(user=request.user).count()
+    return render(request, 'notes/profile.html', {'active': active, 'user_notes': user_notes})

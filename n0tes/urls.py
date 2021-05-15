@@ -22,6 +22,7 @@ urlpatterns = [
     path('note/<int:note_pk>/archive', views.archive, name='archive'),
 
     path('about/', views.about, name='about'),
+    path('profile/', views.profile_page, name='profile_page'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

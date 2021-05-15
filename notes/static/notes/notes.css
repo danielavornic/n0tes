@@ -45,56 +45,6 @@ nav {
     top: 28px;
 }
 
-/* #userPic {
-    background-color: var(--dark-gray);
-    position: relative;
-    cursor: default;
-    display: block;
-    margin: 0 auto;
-    width: 54px;
-    height: 54px;
-    margin-bottom: 10px;
-}
-
-#userPic p {
-    text-align: center;
-    margin-bottom: 0;
-    font-weight: bold;
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    left: 0;
-    right: 0;
-}
-
-#userInfo {
-    margin-bottom: 0;
-    cursor: default;
-    text-align: center;
-    font-weight: bold;
-    word-break: break-word;
-} */
-
-button#logout {
-    color: var(--light-gray);
-    padding: 0;
-    border: none;
-    background-color: transparent;
-    outline: none;
-    position: absolute;
-    bottom: 28px;
-}
-
-#logout:hover {
-    color: white
-}
-
-#logout:focus {
-    outline: none;
-    width: inline;
-}
-
-
 #links {
     margin-top: 36px;
 }
@@ -207,6 +157,10 @@ h1 {
 
 .note .note-text {
     margin-bottom: 24px
+}
+
+#logoutBtn {
+    margin-top: 28px
 }
 
 @media (min-width: 1144px) {

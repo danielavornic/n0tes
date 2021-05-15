@@ -1,6 +1,6 @@
 $('document').ready(function() {
     $('body').show();
-    
+
     var saveBtn = $('button#saveBtn');
     var saveBtnWidth = saveBtn.width();
     var titleEl = $('#id_title');
@@ -46,7 +46,7 @@ $('document').ready(function() {
             ' visualblocks emoticons',
             'media table paste code'
         ],
-        toolbar: 'undo redo | formatselect | bold italic underline |' + 
+        toolbar: 'undo redo | formatselect | forecolor | bold italic underline |' + 
         'alignleft aligncenter alignright alignjustify | ' + 
         ' numlist bullist | link charmap emoticons',
     });

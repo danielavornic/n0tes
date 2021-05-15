@@ -17,8 +17,10 @@
             <ul>
                 <li>
                     <div id="user">
-                        <span class="iconify" data-icon="carbon:user-avatar-filled" data-inline="false"></span>
-                        <span id="userInfo" class="medium-text" title='{{ user.username }}'>{{ user.username }}</span>
+                        <a href="{% url 'profile_page' %}" id="profileLink">
+                            <span class="iconify" data-icon="carbon:user-avatar-filled" data-inline="false"></span>
+                            <span id="userInfo" class="medium-text" title='{{ user.username }}'>{{ user.username }}</span>
+                        </a>
                     </div>
                 </li>
                 <li>
@@ -49,24 +51,6 @@
                     <a href="{% url 'showarchive' %}" id="archiveLink">
                         <span class="iconify" data-inline="false" data-icon="mdi:archive-outline"></span>
                         <span class="medium-text">Archive</span>
-                    </a>
-                </li>
-                <!-- <li>
-                    <a href="{% url 'about' %}" id="aboutLink">
-                        <span class="iconify" data-inline="false" data-icon="mdi:info-outline"></span>
-                        <span class="medium-text">About</span>
-                    </a>
-                </li> -->
-
-                <li>
-                    <a href="#" id="logout">
-                        <form action="{% url 'logoutuser' %}" method="POST">
-                            {% csrf_token %}
-                            <button type="submit" id="logout" title="Log out">
-                                <span class="iconify" data-inline="false" data-icon="ri:logout-box-line"></span>
-                                <span class="medium-text">Log out</span>
-                            </button>
-                        </form>
                     </a>
                 </li>
             </ul>

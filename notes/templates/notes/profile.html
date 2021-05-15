@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile | n0tes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Nunito+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'notes/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'notes/notes.css' %}">
+
+    <style>
+        @media (max-width: 576px) {
+             #noNotes {
+                margin-top: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row" id="mainRow">
+
+            {% include "notes/navbar.html" %}
+
+            <div class="col-sm-9 col-md-10 col-lg-10" id="content">
+                <div class="container">
+
+                    <h1>Profile</h1>
+                    <div id="noNotes">
+                        <p>Username: {{ user.username }}</p>
+                        <p>Total notes: {{ user_notes }}</p>
+                        <p>Date joined: {{ user.date_joined }}</p>
+                        <a href="#">
+                            <form action="{% url 'logoutuser' %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" title="Log out" class="btn" id="logoutBtn">
+                                    <span>Log out</span>
+                                </button>
+                            </form>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="{% static 'notes/notes.js' %}"></script>
+</body>
+</html>
