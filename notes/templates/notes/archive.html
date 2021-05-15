@@ -33,7 +33,7 @@
                                 <a href="{% url 'note' note.id %}">
                                     <div class="note-info">
                                         <div class="note-content">
-                                            <div class="medium-text"><b>{{ note.title|truncatechars:50 }}</b></div>
+                                            <div class="medium-text"><b>{{ note.title }}</b></div>
                                             {% if note.text %}
                                             <div class="note-text">{{ note.text|striptags|truncatechars:150 }}</div>
                                             {% endif %} 

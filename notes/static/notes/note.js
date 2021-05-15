@@ -2,6 +2,16 @@ tinymce.init({
     selector: '#id_text',
     placeholder: 'Start typing…',
     menubar: false,
+    entity_encoding: 'raw',
+    setup: function(editor) {
+        editor.on('input', function() {
+            var saveBtn = $('button#saveBtn');
+            var width = saveBtn.width();
+            saveBtn.html('Save!');
+            saveBtn.addClass('saveBtnChange');
+            saveBtn.width(width);
+        });
+    },
     mobile: {
         theme: 'mobile'
     },
@@ -45,4 +55,12 @@ $('document').ready(function() {
     }
     bookmark();
     check.on('change', bookmark);
+
+    $("#form textarea").on('input change', function() {
+        var saveBtn = $('button#saveBtn');
+        var width = saveBtn.width();
+        saveBtn.html('Save!');
+        saveBtn.addClass('saveBtnChange');
+        saveBtn.width(width);
+    });
 })

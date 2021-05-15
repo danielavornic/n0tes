@@ -34,9 +34,10 @@ label {
 }
 
 #controlls button.btn {
-    padding: 12px 60px;
+    padding: 10px 60px;
     float: right;
-    margin-left: 24px
+    margin-left: 24px;
+    border: 3px solid var(--purple);
 }
 
 #controlls .iconify {
@@ -81,6 +82,12 @@ label {
     z-index: 2;
     opacity: 0;
     cursor: pointer;
+}
+
+.saveBtnChange {
+    background: white;
+    color: var(--purple);
+    border: 4px solid var(--purple);
 }
 
 @media (min-width: 991px) {
