@@ -43,26 +43,26 @@ p {
 }
 
 a {
-    color: var(--black);
+    color: var(--black, #121212);
     font-weight: bold;
     transition: all 200ms ease-in-out;
 }
 
 a:hover {
-    color: var(--dark-gray);
+    color: var(--dark-gray, #23282c);
     text-decoration: none;
 }
 
 .btn {
     color: white;
-    background-color: var(--dark-gray);
+    background-color: var(--dark-gray, #23282c);
     font-weight: bold;
     border-radius: 10px;
     transition: all 200ms ease-in-out;
 }
 
 .btn:hover {
-    background-color: var(--black);
+    background-color: var(--black, #121212);
     color: white;
 }
 
@@ -71,17 +71,17 @@ a:hover {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--light-gray); 
+    background: var(--light-gray, #fafafa); 
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--dark-gray); 
+    background: var(--dark-gray, #23282c); 
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--black);
+    background: var(--black, #121212);
 }
 
 @media (max-width: 768px) { 
