@@ -66,6 +66,24 @@ a:hover {
     color: white;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--blue); 
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--purple); 
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-blue);
+}
+
 @media (max-width: 768px) { 
     h1 {
         font-size: 32px
