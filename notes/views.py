@@ -61,9 +61,9 @@ def add(request):
         if note.title:
             note.save()
         elif not note.title and note.text:
-            note.title = 'New note'
+            note.title = 'Untitled'
             note.save()
-        return redirect('notes')   
+        return render(request, 'notes/note.html', {'note': note, 'form': form})
 
 def notes(request):
     usernotes = Note.objects.filter(user=request.user, archive=False).order_by('-date')
@@ -89,7 +89,7 @@ def note(request, note_pk):
         form = NoteForm(request.POST, instance=note)
         note = form.save(commit=False)
         if not note.title:
-            note.title = 'New note'
+            note.title = 'Untitled'
         form.save()
         return render(request, 'notes/note.html', {'note': note, 'form': form})  
 

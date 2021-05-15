@@ -3,7 +3,7 @@
 }
 
 #menu {
-    background-color: var(--dark-blue);
+    background-color: var(--black);
     color: white;
     padding: 28px 24px;
     overflow-x: hidden;
@@ -46,7 +46,7 @@ nav {
 }
 
 #userPic {
-    background-color: var(--purple);
+    background-color: var(--dark-gray);
     position: relative;
     cursor: default;
     display: block;
@@ -76,7 +76,7 @@ nav {
 }
 
 button#logout {
-    color: var(--blue);
+    color: var(--light-gray);
     padding: 0;
     border: none;
     background-color: transparent;
@@ -158,16 +158,16 @@ h1 {
     position: relative;
     padding: 28px;
     border-radius: 10px;
-    border: 3px solid var(--purple)
+    border: 3px solid var(--dark-gray)
 }
 
 .note:hover {
     background-color: #FAFAFA;
-    border: 3px solid var(--dark-blue)
+    border: 3px solid var(--black)
 }
 
 .note.important {
-    border-left: 5px solid var(--dark-blue);
+    border-left: 5px solid var(--black);
     border-radius: 0 10px 10px 0;
 }
 

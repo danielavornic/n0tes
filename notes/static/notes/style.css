@@ -1,7 +1,7 @@
 :root {
-    --blue: #fafafa;
-    --dark-blue: #121212;
-    --purple:#23282c;
+    --light-gray: #fafafa;
+    --black: #121212;
+    --dark-gray:#23282c;
     --gray: #cecece;
 }
 
@@ -43,26 +43,26 @@ p {
 }
 
 a {
-    color: var(--dark-blue);
+    color: var(--black);
     font-weight: bold;
     transition: all 200ms ease-in-out;
 }
 
 a:hover {
-    color: var(--purple);
+    color: var(--dark-gray);
     text-decoration: none;
 }
 
 .btn {
     color: white;
-    background-color: var(--purple);
+    background-color: var(--dark-gray);
     font-weight: bold;
     border-radius: 10px;
     transition: all 200ms ease-in-out;
 }
 
 .btn:hover {
-    background-color: var(--dark-blue);
+    background-color: var(--black);
     color: white;
 }
 
@@ -71,17 +71,17 @@ a:hover {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--blue); 
+    background: var(--light-gray); 
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--purple); 
+    background: var(--dark-gray); 
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--dark-blue);
+    background: var(--black);
 }
 
 @media (max-width: 768px) { 
