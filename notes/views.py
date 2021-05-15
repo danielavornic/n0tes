@@ -58,11 +58,9 @@ def add(request):
         form = NoteForm(request.POST)
         note = form.save(commit=False)
         note.user = request.user
-        if note.title:
-            note.save()
-        elif not note.title and note.text:
+        if not note.title:
             note.title = 'Untitled'
-            note.save()
+        note.save()
         return render(request, 'notes/note.html', {'note': note, 'form': form})
 
 def notes(request):

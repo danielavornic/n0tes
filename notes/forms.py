@@ -7,3 +7,7 @@ class NoteForm(ModelForm):
     class Meta:
         model = Note
         fields = ['important', 'title', 'text' ]
+    
+    def __init__(self, *args, **kwargs):
+        super(NoteForm, self).__init__(*args, **kwargs)
+        self.fields['title'].required = False
