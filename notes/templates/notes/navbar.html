@@ -1,4 +1,4 @@
-<div class="col-sm-3 col-md-2 col-lg-2" id="menu">
+<div class="col-sm-1" id="menu">
     <div id="toggle">
         <span></span>
         <span></span>
@@ -6,51 +6,36 @@
     </div>
 
     <nav>
-        <!-- <div id="user">
-            <div id="userPic">
-                <p class="large-text">{{ user.username|make_list|first|title }}</p>
-            </div>
-            <p id="userInfo" title='{{ user.username }}'>{{ user.username }}</p>
-        </div> -->
-
         <div id="links">
             <ul>
                 <li>
-                    <div id="user">
-                        <a href="{% url 'profile_page' %}" id="profileLink">
-                            <span class="iconify" data-icon="carbon:user-avatar-filled" data-inline="false"></span>
-                            <span id="userInfo" class="medium-text" title='{{ user.username }}'>{{ user.username }}</span>
-                        </a>
-                    </div>
-                </li>
-                <li>
                     <a href="{% url 'add' %}" id="addLink">
-                        <span class="iconify" data-icon="ant-design:plus-circle-filled" data-inline="false"></span>
-                        <span class="medium-text">New Note</span>
+                        <span class="iconify" data-icon="fa:plus-circle" data-inline="false"></span>
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'notes' %}" id="noteLink">
-                        <span class="iconify" data-inline="false" data-icon="mdi:notebook-outline"></span>
-                        <span class="medium-text">All notes</span>
+                        <span class="iconify" data-icon="ic:baseline-library-books" data-inline="false"></span>
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'search' %}" id="searchLink">
-                        <span class="iconify" data-inline="false" data-icon="mdi:magnify"></span>
-                        <span class="medium-text">Search</span>
+                        <span class="iconify" data-icon="fa-solid:search" data-inline="false"></span>
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'important' %}" id="importantLink">
-                        <span class="iconify" data-inline="false" data-icon="mdi:bookmark-outline"></span>
-                        <span class="medium-text">Important</span>
+                        <span class="iconify" data-icon="fa-solid:bookmark" data-inline="false"></span>
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'showarchive' %}" id="archiveLink">
-                        <span class="iconify" data-inline="false" data-icon="mdi:archive-outline"></span>
-                        <span class="medium-text">Archive</span>
+                        <span class="iconify" data-icon="fa-solid:archive" data-inline="false"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'profile_page' %}" id="profileLink" id="user">
+                        <span class="iconify" data-icon="fa-solid:user-circle" data-inline="false"></span>
                     </a>
                 </li>
             </ul>
