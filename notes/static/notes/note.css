@@ -90,6 +90,10 @@ label {
     border: 4px solid var(--purple);
 }
 
+#form p:nth-child(4) {
+    padding-bottom: 150px;
+}
+
 @media (min-width: 991px) {
     #form p:nth-child(3), #form p:nth-child(4){
         width: 80%;
