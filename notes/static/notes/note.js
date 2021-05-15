@@ -1,66 +1,82 @@
-tinymce.init({
-    selector: '#id_text',
-    placeholder: 'Start typing…',
-    menubar: false,
-    entity_encoding: 'raw',
-    setup: function(editor) {
-        editor.on('input', function() {
-            var saveBtn = $('button#saveBtn');
-            var width = saveBtn.width();
+$('document').ready(function() {
+    var saveBtn = $('button#saveBtn');
+    var saveBtnWidth = saveBtn.width();
+    var titleEl = $('#id_title');
+    var bookmarkEl = $('#id_important');
+    var initBookmark = bookmarkEl.is(":checked");
+    var initTitle = titleEl.val();
+    var initText;
+
+    function toggleSaveBtn() {
+        var title = titleEl.val();
+        var text = tinyMCE.activeEditor.getContent();
+        var bookmark = bookmarkEl.is(":checked");
+        if (title == initTitle && text == initText && bookmark == initBookmark) {
+            saveBtn.html('Saved');
+            saveBtn.removeClass('saveBtnChange');
+        } else {
             saveBtn.html('Save!');
             saveBtn.addClass('saveBtnChange');
-            saveBtn.width(width);
-        });
-    },
-    mobile: {
-        theme: 'mobile'
-    },
-    plugins: [
-        'advlist autoresize autosave autolink lists link charmap',
-        ' visualblocks emoticons',
-        'media table paste code wordcount'
-    ],
-    toolbar: 'undo redo | formatselect | bold italic underline |' + 
-    'alignleft aligncenter alignright alignjustify | ' + 
-    ' numlist bullist | link charmap emoticons',
-});
+        }
+        saveBtn.width(saveBtnWidth);
+    }
 
-$('document').ready(function() {
-    $('#id_title').height($('#id_title').prop('scrollHeight'));
-    $('#id_title').on('input', function () {
-        $(this).height('auto');
-        $(this).height($(this).prop('scrollHeight'));
+    titleEl.on('input change', toggleSaveBtn);
+    $("#id_important").on('change', toggleSaveBtn);
+
+    tinymce.init({
+        selector: '#id_text',
+        placeholder: 'Start typing…',
+        menubar: false,
+        entity_encoding: 'raw',
+        auto_focus: 'id_text',
+        setup: function(editor) {
+            editor.on('init', function() {
+                initText = tinyMCE.activeEditor.getContent();
+            });
+            editor.on('input ExecCommand', toggleSaveBtn);
+        },
+        mobile: {
+            theme: 'mobile'
+        },
+        plugins: [
+            'advlist autoresize autosave autolink lists link charmap',
+            ' visualblocks emoticons',
+            'media table paste code'
+        ],
+        toolbar: 'undo redo | formatselect | bold italic underline |' + 
+        'alignleft aligncenter alignright alignjustify | ' + 
+        ' numlist bullist | link charmap emoticons',
     });
 
-    var check = $('#id_important');
-    check.parent().css({
+    bookmarkEl.parent().css({
         'display': 'inline-block',
         'position': 'relative',
         'float': 'right',
         'margin-top': '11px',
         'margin-right': '24px'
     })
-    function bookmark() {
+
+    //resize title textarea based on content length
+    titleEl.height(titleEl.prop('scrollHeight'));
+    titleEl.on('input', function () {
+        $(this).height('auto');
+        $(this).height($(this).prop('scrollHeight'));
+    });
+
+    function toggleBookmark() {
         var mark = $('#bookmark');
         if (mark) {
             mark.remove();
         }
-        mark = $('<span class="iconify" id="bookmark"></span>')
-        if (check.is(':checked')) {
+        mark = $('<span class="iconify" id="bookmark"></span>');
+        if (bookmarkEl.is(':checked')) {
             mark.attr('data-icon', 'mdi:bookmark');
         } else {
             mark.attr('data-icon', 'mdi:bookmark-outline');
         }
-        check.parent().append(mark);
+        bookmarkEl.parent().append(mark);
     }
-    bookmark();
-    check.on('change', bookmark);
-
-    $("#form textarea").on('input change', function() {
-        var saveBtn = $('button#saveBtn');
-        var width = saveBtn.width();
-        saveBtn.html('Save!');
-        saveBtn.addClass('saveBtnChange');
-        saveBtn.width(width);
-    });
+    toggleBookmark();
+    bookmarkEl.on('change', toggleBookmark);
 })
