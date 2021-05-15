@@ -1,4 +1,6 @@
 $('document').ready(function() {
+    $('body').show();
+    
     var saveBtn = $('button#saveBtn');
     var saveBtnWidth = saveBtn.width();
     var titleEl = $('#id_title');
