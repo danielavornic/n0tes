@@ -41,11 +41,11 @@ nav {
 }
 
 #user {
-    width: 100%;
-    position: relative;
+    position: absolute;
+    top: 28px;
 }
 
-#userPic {
+/* #userPic {
     background-color: var(--dark-gray);
     position: relative;
     cursor: default;
@@ -73,7 +73,7 @@ nav {
     text-align: center;
     font-weight: bold;
     word-break: break-word;
-}
+} */
 
 button#logout {
     color: var(--light-gray);
@@ -124,6 +124,10 @@ button#logout {
 #links .iconify {
     margin-right: 10px;
     font-size: 21px;
+}
+
+#links ul li:nth-child(2) {
+    margin-top: 80px;
 }
 
 h1 {
