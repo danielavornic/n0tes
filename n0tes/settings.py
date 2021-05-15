@@ -71,6 +71,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'n0tes.wsgi.application'
 
+TINYMCE_COMPRESSOR = True
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
