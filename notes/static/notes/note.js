@@ -38,9 +38,6 @@ $('document').ready(function() {
             });
             editor.on('input ExecCommand', toggleSaveBtn);
         },
-        // mobile: {
-        //     theme: 'mobile'
-        // },
         plugins: [
             'advlist autoresize autosave autolink lists link charmap',
             ' visualblocks emoticons',
@@ -55,8 +52,7 @@ $('document').ready(function() {
         'display': 'inline-block',
         'position': 'relative',
         'float': 'right',
-        'margin-top': '11px',
-        'margin-right': '24px'
+        'margin-top': '4px'
     })
 
     //resize title textarea based on content length

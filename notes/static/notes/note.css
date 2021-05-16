@@ -12,7 +12,7 @@ label {
 
 #controlls form {
     display: inline-block;
-    margin-right: 24px;
+    /* margin-right: 24px; */
 }
 
 #controlls button:not(.btn), #controlls a  {
@@ -20,9 +20,10 @@ label {
     background-color: transparent;
     border: none;
     outline: none;
-    font-size: 36px;
+    font-size: 40px;
     color: var(--dark-gray, #23282c);
-    vertical-align: middle;
+    vertical-align: text-top;
+    margin-left: 24px;
 }
 
 #controlls a:hover {
@@ -38,9 +39,9 @@ label {
 }
 
 #controlls button.btn {
-    padding: 10px 60px;
-    float: right;
+    padding: 7px 48px;
     margin-left: 24px;
+    float: right;
     border: 3px solid var(--dark-gray, #23282c);
 }
 
@@ -69,7 +70,7 @@ label {
 }
 
 #bookmark {
-    font-size: 36px;
+    font-size: 40px;
     color: var(--dark-gray, #23282c);
     vertical-align: bottom;
     float: left;
@@ -81,8 +82,8 @@ label {
     top: 50%;
     left: 0;
     right: 0;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     z-index: 2;
     opacity: 0;
     cursor: pointer;
