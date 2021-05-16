@@ -21,7 +21,6 @@ urlpatterns = [
     path('note/<int:note_pk>/delete', views.delete, name='delete'),
     path('note/<int:note_pk>/archive', views.archive, name='archive'),
 
-    path('about/', views.about, name='about'),
     path('profile/', views.profile_page, name='profile_page'),
     path('deleteuser/', views.deleteuser, name='deleteuser')
 ]

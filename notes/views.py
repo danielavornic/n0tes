@@ -140,10 +140,6 @@ def deleteuser(request):
         u.delete()
     return redirect('home')
 
-def about(request):
-    active = 'aboutLink'
-    return render(request, 'notes/about.html', {'active': active})
-
 def profile_page(request):
     if request.user.is_authenticated:
         active = 'profileLink'
