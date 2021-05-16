@@ -52,44 +52,59 @@ def logoutuser(request):
         return redirect('home')
     
 def add(request):
-    if request.method == "GET":
-        return render(request, 'notes/addnote.html', {'form': NoteForm()})
+    if request.user.is_authenticated:
+        if request.method == "GET":
+            return render(request, 'notes/addnote.html', {'form': NoteForm()})
+        else:
+            form = NoteForm(request.POST)
+            note = form.save(commit=False)
+            note.user = request.user
+            if not note.title:
+                note.title = 'Untitled'
+            note.save()
+            return render(request, 'notes/note.html', {'note': note, 'form': form})
     else:
-        form = NoteForm(request.POST)
-        note = form.save(commit=False)
-        note.user = request.user
-        if not note.title:
-            note.title = 'Untitled'
-        note.save()
-        return render(request, 'notes/note.html', {'note': note, 'form': form})
+        return redirect('home')
 
 def notes(request):
-    usernotes = Note.objects.filter(user=request.user, archive=False).order_by('-date')
-    active = 'noteLink'
-    return render(request, 'notes/notes.html', {'notes': usernotes, 'active': active})
+    if request.user.is_authenticated:
+        usernotes = Note.objects.filter(user=request.user, archive=False).order_by('-date')
+        active = 'noteLink'
+        return render(request, 'notes/notes.html', {'notes': usernotes, 'active': active})
+    else:
+        return redirect('home')
 
 def important(request):
-    important = Note.objects.filter(user=request.user, important=True, archive=False).order_by('-date')
-    active = 'importantLink'
-    return render(request, 'notes/important.html', {'important': important, 'active': active})
+    if request.user.is_authenticated:
+        important = Note.objects.filter(user=request.user, important=True, archive=False).order_by('-date')
+        active = 'importantLink'
+        return render(request, 'notes/important.html', {'important': important, 'active': active})
+    else:
+        return redirect('home')
 
 def showarchive(request):
-    archive = Note.objects.filter(user=request.user, archive=True).order_by('-date')
-    active = 'archiveLink'
-    return render(request, 'notes/archive.html', {'archive': archive, 'active': active})   
+    if request.user.is_authenticated:
+        archive = Note.objects.filter(user=request.user, archive=True).order_by('-date')
+        active = 'archiveLink'
+        return render(request, 'notes/archive.html', {'archive': archive, 'active': active})   
+    else:
+        return redirect('home')
 
 def note(request, note_pk):
-    note = get_object_or_404(Note, pk=note_pk, user=request.user)
-    if request.method == "GET":
-        form = NoteForm(instance=note)
-        return render(request, 'notes/note.html', {'note': note, 'form': form})  
+    if request.user.is_authenticated:
+        note = get_object_or_404(Note, pk=note_pk, user=request.user)
+        if request.method == "GET":
+            form = NoteForm(instance=note)
+            return render(request, 'notes/note.html', {'note': note, 'form': form})  
+        else:
+            form = NoteForm(request.POST, instance=note)
+            note = form.save(commit=False)
+            if not note.title:
+                note.title = 'Untitled'
+            form.save()
+            return render(request, 'notes/note.html', {'note': note, 'form': form})  
     else:
-        form = NoteForm(request.POST, instance=note)
-        note = form.save(commit=False)
-        if not note.title:
-            note.title = 'Untitled'
-        form.save()
-        return render(request, 'notes/note.html', {'note': note, 'form': form})  
+        return redirect('home')
 
 def delete(request, note_pk):
     note = get_object_or_404(Note, pk=note_pk, user=request.user)
@@ -108,24 +123,31 @@ def archive(request, note_pk):
             return redirect('notes')
 
 def search(request):
-    active = 'searchLink'
-    if request.method == "GET":
-        keyword = request.GET.get('keyword', None);
-        if keyword:
-            notes = Note.objects.filter(title__icontains=keyword, user=request.user) | Note.objects.filter(text__icontains=keyword, user=request.user)
-            return render(request, 'notes/search.html', {'notes': notes, 'keyword': keyword, 'active': active})  
-    return render(request, 'notes/search.html', {'active': active}) 
+    if request.user.is_authenticated:
+        active = 'searchLink'
+        if request.method == "GET":
+            keyword = request.GET.get('keyword', None);
+            if keyword:
+                notes = Note.objects.filter(title__icontains=keyword, user=request.user) | Note.objects.filter(text__icontains=keyword, user=request.user)
+                return render(request, 'notes/search.html', {'notes': notes, 'keyword': keyword, 'active': active})  
+        return render(request, 'notes/search.html', {'active': active}) 
+    else:
+        return redirect('home')
+
+def deleteuser(request):   
+    if request.user.is_authenticated: 
+        u = User.objects.get(username=request.user.username)
+        u.delete()
+    return redirect('home')
 
 def about(request):
     active = 'aboutLink'
     return render(request, 'notes/about.html', {'active': active})
 
 def profile_page(request):
-    active = 'profileLink'
-    user_notes = Note.objects.filter(user=request.user).count()
-    return render(request, 'notes/profile.html', {'active': active, 'user_notes': user_notes})
-
-def deleteuser(request):    
-    u = User.objects.get(username=request.user.username)
-    u.delete()
-    return redirect('home')
+    if request.user.is_authenticated:
+        active = 'profileLink'
+        user_notes = Note.objects.filter(user=request.user).count()
+        return render(request, 'notes/profile.html', {'active': active, 'user_notes': user_notes})
+    else:
+        return redirect('home')
