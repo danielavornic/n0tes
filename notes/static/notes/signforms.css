@@ -2,12 +2,16 @@
     display: none;
 }
 
+.container-fluid {
+    height: 100%;
+}
+
 #formContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 100%;
 }
 
 form {
