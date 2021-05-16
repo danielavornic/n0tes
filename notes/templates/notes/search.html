@@ -38,7 +38,7 @@
                                     <div class="medium-text"><b>{{ note.title }}</b></div>
                                     <div class="date">{{ note.date|date:'d/m/Y' }}</div>
                                     {% if note.text %}
-                                    <div class="note-text">{{ note.text|striptags|truncatechars:150 }}</div>
+                                    <div class="note-text">{{ note.text|safe|truncatechars:200 }}</div>
                                     {% endif %} 
                                 </a>
                             </li>
