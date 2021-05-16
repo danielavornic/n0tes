@@ -124,3 +124,8 @@ def profile_page(request):
     active = 'profileLink'
     user_notes = Note.objects.filter(user=request.user).count()
     return render(request, 'notes/profile.html', {'active': active, 'user_notes': user_notes})
+
+def deleteuser(request):    
+    u = User.objects.get(username=request.user.username)
+    u.delete()
+    return redirect('home')

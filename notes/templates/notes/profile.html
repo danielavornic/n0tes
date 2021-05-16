@@ -14,7 +14,7 @@
 
     <style>
         @media (max-width: 576px) {
-             #noNotes {
+             .noNotes {
                 margin-top: 28px;
             }
         }
@@ -30,18 +30,23 @@
                 <div class="container">
 
                     <h1>Profile</h1>
-                    <div id="noNotes">
-                        <p>Username: {{ user.username }}</p>
-                        <p>Total notes: {{ user_notes }}</p>
-                        <p>Date joined: {{ user.date_joined }}</p>
-                        <a href="#">
-                            <form action="{% url 'logoutuser' %}" method="POST">
-                                {% csrf_token %}
-                                <button type="submit" title="Log out" class="btn" id="logoutBtn">
-                                    <span>Log out</span>
-                                </button>
-                            </form>
-                        </a>
+                    <div class="noNotes" id="userInfo">
+                        <p class="medium-text">Username: {{ user.username }}</p>
+                        <p class="medium-text">Total notes: {{ user_notes }}</p>
+                        <p class="medium-text">Date joined: {{ user.date_joined }}</p>
+                        <form action="{% url 'logoutuser' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" title="Log out" class="btn" id="logoutBtn">
+                                <span>Log out</span>
+                            </button>
+                        </form>
+                        <form action="{% url 'deleteuser' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" title="Delete profile" class="btn" id="deleteUserBtn"
+                            onclick="return confirm('Are you sure you want to delete your profile?')">
+                                <span>Delete profile</span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

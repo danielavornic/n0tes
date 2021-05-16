@@ -35,7 +35,7 @@ form .btn {
 }
 
 @media (max-width: 576px) {
-    #notes, #noNotes {
+    #notes, .noNotes {
         margin-top: 28px !important;
     }
 }

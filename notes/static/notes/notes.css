@@ -85,7 +85,7 @@ h1 {
     float: right;
 }
 
-#notes, #noNotes {
+#notes, .noNotes {
     margin-top: 28px;
 }
 
@@ -148,8 +148,14 @@ h1 {
     margin-top: 24px
 }
 
-#logoutBtn {
-    margin-top: 28px
+#userInfo form{
+    margin-top: 28px;
+    display: inline-block;
+}
+
+#deleteUserBtn {
+    margin-left: 8px;
+    background-color: #c20000;
 }
 
 @media (max-width: 1024px) {

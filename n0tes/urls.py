@@ -23,6 +23,7 @@ urlpatterns = [
 
     path('about/', views.about, name='about'),
     path('profile/', views.profile_page, name='profile_page'),
+    path('deleteuser/', views.deleteuser, name='deleteuser')
 ]
 
 urlpatterns += staticfiles_urlpatterns()
