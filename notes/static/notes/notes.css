@@ -92,16 +92,19 @@ h1 {
 #notes ul {
     list-style-type: none;
     padding-left: 0;
-    display: grid;
-    grid-gap: 24px;
-    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+}
+
+.note-gap {
+    width: 1.33%;
 }
 
 .note {
     position: relative;
     padding: 28px;
     border-radius: 10px;
-    border: 3px solid var(--dark-gray, #23282c)
+    border: 3px solid var(--dark-gray, #23282c);
+    margin-bottom: 1.33%;
+    width: 24%;
 }
 
 .note:hover {
@@ -142,10 +145,7 @@ h1 {
 .note .date {
     color: #737373;
     font-size: 14px;
-}
-
-.note .note-text {
-    margin-bottom: 24px
+    margin-top: 24px
 }
 
 #logoutBtn {
@@ -160,7 +160,10 @@ h1 {
     .col-sm-11 {
         max-width: 92%
     }
-
+    
+    .note {
+        width: 32%;
+    }
 }
 
 @media (max-width: 767px) { 
@@ -170,6 +173,10 @@ h1 {
     
     .col-sm-11 {
         max-width: 90%
+    }
+
+    .note {
+        width: 49%;
     }
 }
 
@@ -213,5 +220,13 @@ h1 {
 
     #links .iconify {
         font-size: 22px;
+    }
+
+    .note {
+        width: 100%;
+    }
+
+    .note-gap {
+        width: 0;
     }
 }
