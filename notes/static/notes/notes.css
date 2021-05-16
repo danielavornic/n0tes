@@ -195,6 +195,10 @@ h1 {
         max-width: 100%
     } 
 
+    #notes {
+        margin-bottom: 56px;
+    }
+
     #menu {
         height: 56px;
         padding: 0 !important;

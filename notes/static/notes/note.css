@@ -111,14 +111,6 @@ label {
 }
 
 @media (max-width: 768px) {
-    #controlls .iconify {
-        vertical-align: middle !important;
-    }
-
-    #controlls button.btn {
-        padding: 12px 48px;
-    }
-
     #id_title {
         font-size: 28px
     }
@@ -128,30 +120,18 @@ label {
     #controlls {
         margin-bottom: 36px;
     }
-
-    #controlls form {
-        margin-right: 20px;
-    }
 }
 
 @media (max-width: 420px) {
     #controlls button.btn {
-        padding: 10px 36px;
-    }
-
-    #controlls form {
-        margin-right: 12px;
-    }
-
-    #controlls form {
-        margin-right: 14px;
-    }
-
-    #controlls button.btn {
-        margin-left: 14px
+        padding: 5px 36px;
     }
 
     #controlls button:not(.btn), #controlls a, #bookmark  {
-        font-size: 28px;
+        font-size: 36px;
+    }
+
+    #controlls button:not(.btn), #controlls a, #controlls button.bt {
+        margin-left: 18px;
     }
 }
