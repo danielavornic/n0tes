@@ -12,18 +12,15 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-2 col-md-3" id="imageLeft" style="background-image: url({% static 'notes/login-page.jpg' %})"></div>
-            <div class="col-sm-10 col-md-9" id="formContainer">
-                <h1>Sign up to n0tes</h1>
-                <p class="error medium-text">{{ error }}</p>
-                <form method="POST">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="medium-text btn">Sign Up</button>
-                </form>
-                <p>Do you already have an account? <a href="{% url 'loginuser' %}">Log in</a></p>
-            </div>
+        <div id="formContainer">
+            <h1>Sign up to n0tes</h1>
+            <p class="error medium-text">{{ error }}</p>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="medium-text btn">Sign Up</button>
+            </form>
+            <p>Do you already have an account? <a href="{% url 'loginuser' %}">Log in</a></p>
         </div>
     </div>
 
