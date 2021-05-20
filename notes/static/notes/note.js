@@ -38,6 +38,9 @@ $('document').ready(function() {
             });
             editor.on('input ExecCommand', toggleSaveBtn);
         },
+        mobile: {
+            theme: 'mobile'
+        },
         plugins: [
             'advlist autoresize autosave autolink lists link charmap',
             ' visualblocks emoticons',
