@@ -40,7 +40,7 @@ $('document').ready(function() {
             ' visualblocks emoticons',
             'media table paste code'
         ],
-        toolbar: 'undo redo | formatselect | forecolor | bold italic underline |' + 
+        toolbar: 'undo redo | formatselect | bold italic underline |' + 
         'alignleft aligncenter alignright alignjustify | ' + 
         ' numlist bullist | link charmap emoticons',
         setup: function(editor) {
@@ -50,7 +50,7 @@ $('document').ready(function() {
             editor.on('input ExecCommand', toggleSaveBtn);
         },
         mobile: {
-            toolbar: 'undo redo | bold italic underline | forecolor |numlist bullist'
+            toolbar: 'undo redo | bold italic underline | numlist bullist'
         },
     });
 
