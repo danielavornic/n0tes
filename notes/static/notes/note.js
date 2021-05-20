@@ -1,7 +1,18 @@
 $('document').ready(function() {
     $('body').show();
 
-    var saveBtn = $('button#saveBtn');
+    if ($(window).width() < 576) {
+		var height = $(window).height();
+		$(window).on('resize', function() {
+			if ($(window).height() < height) {
+				$('#menu').hide();
+			} else {
+				$('#menu').show();
+			}
+		})
+	}
+
+	var saveBtn = $('button#saveBtn');
     var saveBtnWidth = saveBtn.width();
     var titleEl = $('#id_title');
     var bookmarkEl = $('#id_important');

@@ -6,6 +6,10 @@
     max-width: 94%
 }
 
+body {
+    display: none
+}
+
 #mainRow {
     height: 100vh;
     position: relative;
@@ -195,11 +199,11 @@ h1 {
     } 
 
     #notes {
-        margin-bottom: 56px;
+        margin-bottom: 60px;
     }
 
     #menu {
-        height: 56px;
+        height: 60px;
         padding: 0 !important;
         bottom: 0;
         top: initial
