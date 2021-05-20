@@ -39,7 +39,15 @@ $('document').ready(function() {
             editor.on('input ExecCommand', toggleSaveBtn);
         },
         mobile: {
-            theme: 'mobile'
+            theme: 'mobile',
+            plugins: [
+                'advlist autoresize autosave autolink lists link charmap',
+                ' visualblocks emoticons',
+                'media table paste code'
+            ],
+            toolbar: 'undo redo | formatselect | forecolor | bold italic underline |' + 
+            'alignleft aligncenter alignright alignjustify | ' + 
+            ' numlist bullist | link charmap emoticons',
         },
         plugins: [
             'advlist autoresize autosave autolink lists link charmap',
