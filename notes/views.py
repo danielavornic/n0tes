@@ -8,13 +8,13 @@ from .models import Note
 
 def home(request):
     if request.user.is_authenticated:
-        return redirect('notes')
+        return redirect('all_notes')
     else:
         return render(request, 'notes/home.html')
 
-def signupuser(request):
+def signup_user(request):
     if request.user.is_authenticated:
-        return redirect('notes')
+        return redirect('all_notes')
     else:
         if request.method == "GET":
             return render(request, 'notes/signupuser.html', {'form': UserCreationForm()})
@@ -26,15 +26,15 @@ def signupuser(request):
                     user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
                     user.save()
                     login(request, user)
-                    return redirect('notes')
+                    return redirect('all_notes')
                 except IntegrityError:
                     return render(request, 'notes/signupuser.html', {'form': UserCreationForm(), 'error': 'That username has already been taken'})
             else:
                 return render(request, 'notes/signupuser.html', {'form': UserCreationForm(), 'error': 'Passwords did not match'})
 
-def loginuser(request):
+def login_user(request):
     if request.user.is_authenticated:
-        return redirect('notes')
+        return redirect('all_notes')
     else:
         if request.method == "GET":
             return render(request, 'notes/loginuser.html', {'form': AuthenticationForm()})
@@ -44,14 +44,14 @@ def loginuser(request):
                 return render(request, 'notes/loginuser.html', {'form': AuthenticationForm(), 'error': 'Username and password did not match'})
             else:
                 login(request, user)
-                return redirect('notes')
+                return redirect('all_notes')
 
-def logoutuser(request):
+def logout_user(request):
     if request.method == 'POST':
         logout(request)
         return redirect('home')
     
-def add(request):
+def add_note(request):
     if request.user.is_authenticated:
         if request.method == "GET":
             return render(request, 'notes/addnote.html', {'form': NoteForm()})
@@ -66,7 +66,7 @@ def add(request):
     else:
         return redirect('home')
 
-def notes(request):
+def all_notes(request):
     if request.user.is_authenticated:
         usernotes = Note.objects.filter(user=request.user, archive=False).order_by('-date')
         active = 'noteLink'
@@ -74,7 +74,7 @@ def notes(request):
     else:
         return redirect('home')
 
-def important(request):
+def important_notes(request):
     if request.user.is_authenticated:
         important = Note.objects.filter(user=request.user, important=True, archive=False).order_by('-date')
         active = 'importantLink'
@@ -82,7 +82,7 @@ def important(request):
     else:
         return redirect('home')
 
-def showarchive(request):
+def archive(request):
     if request.user.is_authenticated:
         archive = Note.objects.filter(user=request.user, archive=True).order_by('-date')
         active = 'archiveLink'
@@ -106,21 +106,21 @@ def note(request, note_pk):
     else:
         return redirect('home')
 
-def delete(request, note_pk):
+def delete_note(request, note_pk):
     note = get_object_or_404(Note, pk=note_pk, user=request.user)
     if request.method == 'POST':
         note.delete()
-        return redirect('notes')
+        return redirect('all_notes')
 
-def archive(request, note_pk):
+def archive_note(request, note_pk):
     note = get_object_or_404(Note, pk=note_pk, user=request.user)
     if request.method == 'POST':
         note.archive = not note.archive
         note.save()
         if note.archive:
-            return redirect('showarchive')
+            return redirect('archive')
         else:
-            return redirect('notes')
+            return redirect('all_notes')
 
 def search(request):
     if request.user.is_authenticated:
@@ -134,13 +134,13 @@ def search(request):
     else:
         return redirect('home')
 
-def deleteuser(request):   
+def delete_user(request):   
     if request.user.is_authenticated: 
         u = User.objects.get(username=request.user.username)
         u.delete()
     return redirect('home')
 
-def profile_page(request):
+def profile(request):
     if request.user.is_authenticated:
         active = 'profileLink'
         user_notes = Note.objects.filter(user=request.user).count()

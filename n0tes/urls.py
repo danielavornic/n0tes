@@ -8,21 +8,21 @@ urlpatterns = [
     path(r'^tinymce/', include('tinymce.urls')),
     path('', views.home, name='home'),
 
-    path('signup/', views.signupuser, name='signupuser'),
-    path('login/', views.loginuser, name='loginuser'),
-    path('logout/', views.logoutuser, name='logoutuser'),
+    path('signup/', views.signup_user, name='signup_user'),
+    path('login/', views.login_user, name='login_user'),
+    path('logout/', views.logout_user, name='logout_user'),
 
-    path('notes/', views.notes, name='notes'),
+    path('notes/', views.all_notes, name='all_notes'),
     path('note/<int:note_pk>/', views.note, name='note'),
-    path('important/', views.important, name='important'),
-    path('archive/', views.showarchive, name='showarchive'),
-    path('add/', views.add, name='add'),
+    path('important/', views.important_notes, name='important_notes'),
+    path('archive/', views.archive, name='archive'),
+    path('new-note/', views.add_note, name='add_note'),
     path('search/', views.search, name='search'),
-    path('note/<int:note_pk>/delete', views.delete, name='delete'),
-    path('note/<int:note_pk>/archive', views.archive, name='archive'),
+    path('note/<int:note_pk>/delete', views.delete_note, name='delete_note'),
+    path('note/<int:note_pk>/archive', views.archive_note, name='archive_note'),
 
-    path('profile/', views.profile_page, name='profile_page'),
-    path('deleteuser/', views.deleteuser, name='deleteuser')
+    path('profile/', views.profile, name='profile'),
+    path(r'^deleteuser/', views.delete_user, name='delete_user')
 ]
 
 urlpatterns += staticfiles_urlpatterns()

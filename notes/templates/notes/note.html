@@ -43,7 +43,7 @@
 
                     <div id="controlls">                        
                         <div id="right">
-                            <form method="POST" action="{% url 'delete' note.id %}">
+                            <form method="POST" action="{% url 'delete_note' note.id %}">
                                 {% csrf_token %}
                                 <button type="submit" title="Delete" onclick="return confirm('Are you sure you want to delete this note?')">
                                     <span class="iconify" data-icon="mdi:trash-can-outline"></span>
@@ -51,12 +51,12 @@
                             </form>
                     
                             {% if note.archive %}
-                            <form method="POST" action="{% url 'archive' note.id %}">
+                            <form method="POST" action="{% url 'archive_note' note.id %}">
                                 {% csrf_token %}
                                 <button type="submit" title="Unarchive"><span class="iconify" data-icon="mdi:archive-arrow-up-outline"></span></button>
                             </form>
                             {% else %}
-                            <form method="POST" action="{% url 'archive' note.id %}">
+                            <form method="POST" action="{% url 'archive_note' note.id %}">
                                 {% csrf_token %}
                                 <button type="submit" title="Archive"><span class="iconify" data-icon="mdi:archive-arrow-down-outline"></span></button>
                             </form>
