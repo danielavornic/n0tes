@@ -50,7 +50,8 @@ $('document').ready(function() {
             editor.on('input ExecCommand', toggleSaveBtn);
         },
         mobile: {
-            toolbar: 'undo redo | bold italic underline | numlist bullist'
+            plugins: 'advlist autoresize autosave autolink lists charmap',
+            toolbar: 'undo redo | formatselect | bold italic underline | numlist bullist'
         },
     });
 
