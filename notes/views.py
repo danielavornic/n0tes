@@ -95,14 +95,14 @@ def note(request, note_pk):
         note = get_object_or_404(Note, pk=note_pk, user=request.user)
         if request.method == "GET":
             form = NoteForm(instance=note)
-            return render(request, 'notes/note.html', {'note': note, 'form': form})  
+            return render(request, 'notes/note.html', {'note': note, 'form': form})
         else:
             form = NoteForm(request.POST, instance=note)
             note = form.save(commit=False)
             if not note.title:
                 note.title = 'Untitled'
             form.save()
-            return render(request, 'notes/note.html', {'note': note, 'form': form})  
+            return render(request, 'notes/note.html', {'note': note, 'form': form})
     else:
         return redirect('home')
 
@@ -114,13 +114,11 @@ def delete_note(request, note_pk):
 
 def archive_note(request, note_pk):
     note = get_object_or_404(Note, pk=note_pk, user=request.user)
+    form = NoteForm(instance=note)
     if request.method == 'POST':
         note.archive = not note.archive
         note.save()
-        if note.archive:
-            return redirect('archive')
-        else:
-            return redirect('all_notes')
+        return render(request, 'notes/note.html', {'note': note, 'form': form})
 
 def search(request):
     if request.user.is_authenticated:
