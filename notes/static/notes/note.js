@@ -32,23 +32,9 @@ $('document').ready(function() {
         menubar: false,
         entity_encoding: 'raw',
         auto_focus: 'id_text',
-        setup: function(editor) {
-            editor.on('init', function() {
-                initText = tinyMCE.activeEditor.getContent();
-            });
-            editor.on('input ExecCommand', toggleSaveBtn);
-        },
-        mobile: {
-            theme: 'mobile',
-            plugins: [
-                'advlist autoresize autosave autolink lists link charmap',
-                ' visualblocks emoticons',
-                'media table paste code'
-            ],
-            toolbar: 'undo redo | formatselect | forecolor | bold italic underline |' + 
-            'alignleft aligncenter alignright alignjustify | ' + 
-            ' numlist bullist | link charmap emoticons',
-        },
+        force_br_newlines : true,
+        force_p_newlines : false,
+        forced_root_block : '',
         plugins: [
             'advlist autoresize autosave autolink lists link charmap',
             ' visualblocks emoticons',
@@ -57,6 +43,15 @@ $('document').ready(function() {
         toolbar: 'undo redo | formatselect | forecolor | bold italic underline |' + 
         'alignleft aligncenter alignright alignjustify | ' + 
         ' numlist bullist | link charmap emoticons',
+        setup: function(editor) {
+            editor.on('init', function() {
+                initText = tinyMCE.activeEditor.getContent();
+            });
+            editor.on('input ExecCommand', toggleSaveBtn);
+        },
+        mobile: {
+            toolbar: 'undo redo | bold italic underline | forecolor |numlist bullist'
+        },
     });
 
     bookmarkEl.parent().css({

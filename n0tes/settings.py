@@ -25,7 +25,7 @@ SECRET_KEY = 'ld3yt+k2!oi9fd)xt_fofok=f%2(+5f*8m5qad$pu48a)799hh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'n0tesapp.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'n0tesapp.herokuapp.com', '192.168.0.25']
 
 
 # Application definition
