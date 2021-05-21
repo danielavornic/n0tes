@@ -129,6 +129,7 @@ h1 {
 
 .note ol {
     padding-left: 16px;
+    margin: 0 auto !important;
 }
 
 .note a {

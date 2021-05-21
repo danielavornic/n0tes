@@ -51,6 +51,8 @@ $(document).ready(function() {
             plugins: 'advlist autoresize autosave autolink lists charmap',
             toolbar: 'undo redo | bold italic underline strikethrough | numlist bullist'
         },
+        content_style: 'body { margin: 1rem 0; line-height: 1.5}' + 
+        'ul, ol { padding-inline-start: 18px; margin: 0 auto}'
     });
 
     bookmarkEl.parent().css({
