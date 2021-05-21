@@ -93,7 +93,7 @@ h1 {
     margin-top: 28px;
 }
 
-#notes ul {
+#notes > ul {
     list-style-type: none;
     padding-left: 0;
 }
@@ -121,8 +121,14 @@ h1 {
     border-radius: 0 10px 10px 0;
 }
 
-.note p {
-    display: inline;
+#notes .note ul {
+    height: auto !important;
+    list-style-type: initial;
+    padding-left: 16px;
+}
+
+.note ol {
+    padding-left: 16px;
 }
 
 .note a {
@@ -132,10 +138,6 @@ h1 {
 
 .note div {
     word-break: break-word;
-}
-
-.note .medium-text {
-    vertical-align: top;
 }
 
 .note-info {
@@ -151,7 +153,7 @@ h1 {
     margin-top: 24px
 }
 
-#userInfo form{
+#profileBtns form {
     margin-top: 28px;
     display: inline-block;
 }
