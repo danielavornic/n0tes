@@ -1,32 +1,29 @@
+{% extends "notes/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login | n0tes</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Nunito+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'notes/style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'notes/signforms.css' %}">
-</head>
-<body>
-    <div class="container-fluid">
-        <div id="formContainer">
-            <h1>Log in to n0tes</h1>
-            <p class="error medium-text">{{ error }}</p>
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="medium-text btn">Log in</button>
-            </form>
-            <p>No account? <a href="{% url 'signup_user' %}">Sign up</a></p>
-        </div>
-    </div>
 
-    <script>
-        document.getElementById("id_username").placeholder = "Username";
-        document.getElementById("id_password").placeholder = "Password";
-    </script>
-</body>
-</html>
+{% block title %}Log in{% endblock %}
+{% block head_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'notes/signforms.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div id="formContainer">
+        <h1>Log in to n0tes</h1>
+        <p class="error medium-text">{{ error }}</p>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="medium-text btn">Log in</button>
+        </form>
+        <p>No account? <a href="{% url 'signup_user' %}">Sign up</a></p>
+    </div>
+</div>
+{% endblock %}
+
+{% block body_js %}
+<script>
+	$("#id_username").attr("placeholder", "Username");
+	$("#id_password").attr("placeholder", "Password");
+</script>
+{% endblock %}

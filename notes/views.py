@@ -54,7 +54,7 @@ def logout_user(request):
 def add_note(request):
     if request.user.is_authenticated:
         if request.method == "GET":
-            return render(request, 'notes/addnote.html', {'form': NoteForm()})
+            return render(request, 'notes/addnote.html', {'note': 'true', 'form': NoteForm()})
         else:
             form = NoteForm(request.POST)
             note = form.save(commit=False)
@@ -78,7 +78,7 @@ def important_notes(request):
     if request.user.is_authenticated:
         important = Note.objects.filter(user=request.user, important=True, archive=False).order_by('-date')
         active = 'importantLink'
-        return render(request, 'notes/important.html', {'important': important, 'active': active})
+        return render(request, 'notes/important.html', {'notes': important, 'active': active})
     else:
         return redirect('home')
 
@@ -86,7 +86,7 @@ def archive(request):
     if request.user.is_authenticated:
         archive = Note.objects.filter(user=request.user, archive=True).order_by('-date')
         active = 'archiveLink'
-        return render(request, 'notes/archive.html', {'archive': archive, 'active': active})   
+        return render(request, 'notes/archive.html', {'notes': archive, 'active': active})   
     else:
         return redirect('home')
 
@@ -141,7 +141,7 @@ def delete_user(request):
 def profile(request):
     if request.user.is_authenticated:
         active = 'profileLink'
-        user_notes = Note.objects.filter(user=request.user).count()
-        return render(request, 'notes/profile.html', {'active': active, 'user_notes': user_notes})
+        notes_count = Note.objects.filter(user=request.user).count()
+        return render(request, 'notes/profile.html', {'active': active, 'notes_count': notes_count})
     else:
         return redirect('home')

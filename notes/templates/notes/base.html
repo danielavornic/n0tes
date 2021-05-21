@@ -1,17 +1,144 @@
-{% if user.is_authenticated %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}Welcome{% endblock title %} | n0tes</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="{% static 'notes/favicon.ico' %}">
+	<link rel="stylesheet" 
+	href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Nunito+Sans:ital,wght@0,400;0,700;1,400&display=swap">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'notes/style.css' %}">	
+	{% block head_css %}{% endblock head_css %}
 
-<p>Logged in as {{ user.username }}</p>
-<form action="{% url 'logout_user' %}" method="POST">
-    {% csrf_token %}
-    <button type="submit">Log out</button>
-</form>
+	{% if user.is_authenticated %}
+	<link rel="stylesheet" type="text/css" href="{% static 'notes/notes.css' %}">
+	<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" 
+	integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<script src="{% static 'notes/notes.js' %}"></script>
+		{% if note %}
+		<script referrerpolicy="origin"
+		src="https://cdn.tiny.cloud/1/bq2e25erbfjw06gx49ky7pwwexnwzzxj858jzcakrxfy2zx2/tinymce/5/tinymce.min.js">
+		</script>
+		<script src="{% static 'notes/note.js' %}"></script>
+		{% endif %}
+		{% if notes %}
+		<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+		{% endif %}
+	{% endif %}
+</head>
 
-{% else %}
+<body>
+	{% if note %}
+	<style>
+		.tox-tinymce {
+			border: none;
+		}
+	
+		.tox .tox-statusbar {
+			display: none;
+		}
+	
+		.tox .tox-toolbar__primary {
+			border: 1px solid rgb(204, 204, 204);
+			background: none;
+		}
+	</style>
+	{% endif %}
 
-<a href="{% url 'signup_user' %}">Sign Up</a>
-<a href="{% url 'login_user' %}">Log in</a>
+	{% block content %}
+	{% if user.is_authenticated %}
+	<div class="container-fluid">
+		<div class="row" id="mainRow">
+			<div class="col-xs-12 col-sm-1" id="menu">
+				<nav>
+					<div id="links">
+						<ul>
+							<li>
+								<a href="{% url 'add_note' %}" id="addLink">
+									<span class="iconify" data-icon="fa:plus-circle" data-inline="false"></span>
+								</a>
+							</li>
+							<li>
+								<a href="{% url 'all_notes' %}" id="noteLink">
+									<span class="iconify" data-icon="ic:baseline-library-books" data-inline="false"></span>
+								</a>
+							</li>
+							<li>
+								<a href="{% url 'search' %}" id="searchLink">
+									<span class="iconify" data-icon="fa-solid:search" data-inline="false"></span>
+								</a>
+							</li>
+							<li>
+								<a href="{% url 'important_notes' %}" id="importantLink">
+									<span class="iconify" data-icon="fa-solid:bookmark" data-inline="false"></span>
+								</a>
+							</li>
+							<li>
+								<a href="{% url 'archive' %}" id="archiveLink">
+									<span class="iconify" data-icon="fa-solid:archive" data-inline="false"></span>
+								</a>
+							</li>
+							<li>
+								<a href="{% url 'profile' %}" id="profileLink" id="user">
+									<span class="iconify" data-icon="fa-solid:user-circle" data-inline="false"></span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+			<div class="col-xs-12 col-sm-11" id="content">
+				<div class="container">
+					{% if note %}
+					{% block note %}{% endblock note %}
+					{% else %}
+						<h1>{% block page_title %}Notes{% endblock page_title %}</h1>
+						{% block search_form %}{% endblock search_form %}
+						{% if notes %}
+						<div id="notes">
+							<ul>
+								<li class="note-gap"></li>
+								{% for note in notes %}
+								<li class="note {% if note.important %} important{% endif %}">
+									<a href="{% url 'note' note.id %}">
+										<div class="note-info">
+											<div class="note-content">
+												<h5><b>{{ note.title }}</b></h5>
+												{% if note.text %}
+												<div class="note-text">{{ note.text|safe|truncatechars:300 }}</div>
+												{% endif %} 
+											</div>
+											<div class="date">{{ note.date|date:'d M Y' }}</div>
+										</div>
+									</a>
+								</li>
+								{% endfor %}
+							</ul>
+						</div>
+						{% else %}
+						<div class="noNotes">{% block no_notes %}{% endblock no_notes %}</div>
+						{% endif %}
+					{% endif %}
+				</div>
+			</div>
+		</div>        
+	</div>
+	{% endif %}
+	{% endblock content%}
 
-{% endif %}
-
-{% block content%}
-{% endblock %}
+	{% if not user.is_authenticated %}
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" 
+	integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	{% endif %}
+	{% block body_js %}
+	<script>
+		if ("{{ active }}") {
+			$("#{{ active }}").css('color', '#ffffff');
+    }
+	</script>
+	{% endblock body_js %}
+</body>
+</html>
