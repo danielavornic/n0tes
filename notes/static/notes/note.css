@@ -12,7 +12,6 @@ label {
 
 #controlls form {
     display: inline-block;
-    /* margin-right: 24px; */
 }
 
 #controlls button:not(.btn), #controlls a  {
@@ -117,8 +116,8 @@ label {
 }
 
 @media (max-width: 576px) {
-    #controlls {
-        margin-bottom: 36px;
+    #id_title {
+        margin-top: 20px
     }
 }
 
