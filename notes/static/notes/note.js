@@ -1,3 +1,4 @@
+$(document).ready(function() {
 	var saveBtn = $('button#saveBtn');
     var saveBtnWidth = saveBtn.width();
     var titleEl = $('#id_title');
@@ -20,6 +21,7 @@
         saveBtn.width(saveBtnWidth);
     }
 
+    titleEl.focus();
     titleEl.on('input change', toggleSaveBtn);
     $("#id_important").on('change', toggleSaveBtn);
 
@@ -28,7 +30,6 @@
         placeholder: 'Start typing…',
         menubar: false,
         entity_encoding: 'raw',
-        auto_focus: 'id_text',
         force_br_newlines : true,
         force_p_newlines : false,
         forced_root_block : '',
@@ -37,7 +38,7 @@
             ' visualblocks emoticons',
             'media table paste code'
         ],
-        toolbar: 'undo redo | formatselect | bold italic underline |' + 
+        toolbar: 'undo redo | bold italic underline strikethrough |' + 
         'alignleft aligncenter alignright alignjustify | ' + 
         ' numlist bullist | link charmap emoticons',
         setup: function(editor) {
@@ -48,7 +49,7 @@
         },
         mobile: {
             plugins: 'advlist autoresize autosave autolink lists charmap',
-            toolbar: 'undo redo | formatselect | bold italic underline | numlist bullist'
+            toolbar: 'undo redo | bold italic underline strikethrough | numlist bullist'
         },
     });
 
