@@ -1,5 +1,15 @@
-$('document').ready(function() {
+$(document).ready(function() {
     $('body').show();
+    if ($(window).width() < 576) {
+        var height = $(window).height();
+        $(window).on('resize', function() {
+            if ($(window).height() < height) {
+                $('#menu').hide();
+            } else {
+                $('#menu').show();
+            }
+        })
+    }
 
     var $grid = $('#notes ul').isotope({
         itemSelector: '.note',
@@ -15,15 +25,4 @@ $('document').ready(function() {
     $('.note-text').each(function(){
         $(this).html($(this).html().replace(/&amp;nbsp;/gi,''));
     });
-
-    if ($(window).width() < 576) {
-        var height = $(window).height();
-        $(window).on('resize', function() {
-            if ($(window).height() < height) {
-                $('#menu').hide();
-            } else {
-                $('#menu').show();
-            }
-        })
-    }
 })
